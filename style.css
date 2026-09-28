@@ -895,10 +895,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 }
 
 .phone-mockup {
-  width: 250px;
-  height: 480px;
+  width: 260px;
+  height: 546px;
+  max-width: 100%;
   background: #14120f;
-  border-radius: 42px;
+  border-radius: 44px;
   border: 4px solid #2e281e;
   box-shadow:
     0 0 0 2px rgba(201,168,76,0.25),
@@ -937,10 +938,10 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
   z-index: 10;
 }
 
-/* Écran du téléphone */
+/* Écran du téléphone - Proportions fidèles aux écrans 19.5:9 et 20:9 */
 .phone-screen {
   width: 100%; height: 100%;
-  border-radius: 34px;
+  border-radius: 36px;
   overflow: hidden;
   position: relative;
   background: #000;
@@ -992,10 +993,10 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
   z-index: 10;
 }
 
-/* ─── Mockup Ordinateur Portable / Desktop Dashboard ─── */
+/* ─── Mockup Ordinateur Portable / Desktop Dashboard Widescreen ─── */
 .feat-project-device.desktop-device {
   width: 100%;
-  max-width: 480px;
+  max-width: 580px;
 }
 
 .laptop-mockup {
@@ -1100,11 +1101,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 }
 .browser-url-bar i { color: var(--gold); font-size: 0.55rem; }
 
-/* Écran d'affichage du Laptop */
+/* Écran d'affichage du Laptop — Ratio panoramique exact des Dashboards Mywa */
 .laptop-screen {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3837 / 1803;
   background: #090806;
   border-radius: 0 0 6px 6px;
   overflow: hidden;
@@ -1114,9 +1115,10 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: top left;
   transition: opacity 0.35s ease, transform 0.5s ease;
   display: block;
+  background: #0b0e14;
 }
 .laptop-screen:hover .laptop-display-img {
   transform: scale(1.03);
@@ -1371,32 +1373,33 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 .lightbox-viewport {
   flex: 1;
   display: flex; align-items: center; justify-content: center;
-  height: 100%; max-height: 540px;
-  padding: 10px;
+  height: 100%; max-height: 75vh;
+  padding: 16px;
 }
 
 /* Container élargi pour les Dashboards */
 .proofs-lightbox.desktop-mode .lightbox-container {
-  max-width: 1080px;
+  max-width: 1120px;
+  width: 95vw;
 }
 
 /* Par défaut, téléphone affiché, laptop masqué */
 .lightbox-phone-frame {
-  width: 250px;
-  height: 490px;
+  width: min(320px, 86vw);
+  height: min(670px, 72vh);
   background: #000;
-  border-radius: 36px;
-  border: 3px solid #332b1e;
-  box-shadow: 0 15px 45px rgba(0,0,0,0.8), 0 0 30px rgba(201,168,76,0.2);
+  border-radius: 46px;
+  border: 3.5px solid #332b1e;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 35px rgba(201,168,76,0.25);
   position: relative;
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
 .lightbox-phone-notch {
-  width: 60px; height: 14px;
+  width: 70px; height: 16px;
   background: #14120e;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
   position: absolute; top: 0; left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -1411,11 +1414,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 .lightbox-laptop-frame {
   display: none;
   width: 100%;
-  max-width: 860px;
+  max-width: 1040px;
   background: #14120e;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 2.5px solid #332b1e;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 35px rgba(201,168,76,0.2);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.9), 0 0 45px rgba(201,168,76,0.22);
   overflow: hidden;
   flex-direction: column;
 }
@@ -1446,7 +1449,8 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 
 .lightbox-laptop-screen {
   width: 100%;
-  height: 420px;
+  aspect-ratio: 3837 / 1803;
+  max-height: 64vh;
   background: #090806;
   display: flex;
   align-items: center;
@@ -1759,9 +1763,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
   .hero-section { grid-template-columns: 1fr; padding: 100px 60px 60px; }
   .hero-photo-col { display: none; }
   .scroll-indicator { grid-row: 2; }
-  .feat-project { grid-template-columns: 1fr; }
+  .feat-project { grid-template-columns: 1fr; gap: 40px; }
   .feat-reverse { direction: ltr; }
-  .feat-project-img { height: 240px; }
+  .feat-reverse .feat-project-content { order: 1; }
+  .feat-reverse .feat-project-device { order: 2; }
+  .feat-project-device.desktop-device { max-width: 100%; }
   .feat-project-content { padding: 20px 0; }
 }
 
@@ -1793,6 +1799,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
   .hero-name { font-size: clamp(2.6rem, 10vw, 4rem); }
   .section { padding: 64px 24px; }
   .footer-inner { padding: 32px 24px; }
+  .phone-mockup { width: 230px; height: 480px; }
   .other-projects-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .about-info-list { grid-template-columns: 1fr; }
