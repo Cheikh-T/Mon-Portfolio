@@ -507,80 +507,90 @@ const PROJECT_CONFIG = {
     device: 'mobile',
     url: 'https://mywa.market.app',
     items: [
-      { src: 'images/home.jpg', title: 'Mywa — 01. Accueil marketplace & Boutiques en vedette' },
-      { src: 'images/boutique.jpg', title: 'Mywa — 02. Vitrine boutique & Catégories' },
-      { src: 'images/Produit.jpg', title: 'Mywa — 03. Fiche produit détaillée & Panier' },
-      { src: 'images/Login.jpg', title: 'Mywa — 04. Authentification & Sécurité Firebase' }
+      { src: 'images/Mywa/home 1.jpg', title: 'Mywa — 01. Accueil marketplace & Boutiques en vedette' },
+      { src: 'images/Mywa/boutique.jpg', title: 'Mywa — 02. Vitrine boutique & Catégories' },
+      { src: 'images/Mywa/boutik.jpg', title: 'Mywa — 03. Fiche produit détaillée & Panier' },
+      { src: 'images/Mywa/Login.jpg', title: 'Mywa — 04. Authentification & Sécurité Firebase' }
     ]
   },
   cid: {
     device: 'mobile',
     url: 'https://cid-banking.secure.ml',
     items: [
-      { src: 'images/transct.jpg', title: 'CID Banking — 01. Historique des transactions sur 3 mois' },
-      { src: 'images/Screenshot_20260916_165001.jpg', title: 'CID Banking — 02. Tableau de bord compte & Solde' },
-      { src: 'images/Screenshot_20260916_165006.jpg', title: 'CID Banking — 03. Validation virement & Reçu numérique' },
-      { src: 'images/Screenshot_20260916_165009.jpg', title: 'CID Banking — 04. Détails d\'opération & Relevé bancaire' }
+      { src: 'images/Client Bank/home 1.png', title: 'CID Banking — 01. Tableau de bord compte & Solde client' },
+      { src: 'images/Client Bank/1 (1).PNG', title: 'CID Banking — 02. Liste & Historique des opérations bancaires' },
+      { src: 'images/Client Bank/1 (2).PNG', title: 'CID Banking — 03. Validation et reçu de transfert bancaire' },
+      { src: 'images/Client Bank/detail.png', title: 'CID Banking — 04. Détails d\'opération & Relevé de compte sécurisé' }
+    ]
+  },
+  'mywa-dash': {
+    device: 'desktop',
+    url: 'https://admin.mywa.market/dashboard',
+    items: [
+      { src: 'images/Mywa/Dashboard/Dashboard (1).png', title: 'Mywa Dashboard — 01. Vue d\'ensemble des ventes & Métriques clés' },
+      { src: 'images/Mywa/Dashboard/Dashboard (2).png', title: 'Mywa Dashboard — 02. Graphiques analytiques de performance et chiffre d\'affaires' },
+      { src: 'images/Mywa/Dashboard/Dashboard (3).png', title: 'Mywa Dashboard — 03. Administration des boutiques partenaires & Catalogues' },
+      { src: 'images/Mywa/Dashboard/Dashboard (4).png', title: 'Mywa Dashboard — 04. Gestion des commandes, livraisons et flux clients' }
     ]
   },
   malishi: {
     device: 'mobile',
     url: 'https://malishi.com',
     items: [
-      { src: 'images/boutique.jpg', title: 'MaliShi — 01. Vitrine mobile des produits Karité' },
-      { src: 'images/bouti.jpg', title: 'MaliShi — 02. Grille catalogue & Filtres par gamme' },
-      { src: 'images/boutik.jpg', title: 'MaliShi — 03. Panier d\'achat & Validation de commande' },
-      { src: 'images/home 1.jpg', title: 'MaliShi — 04. Accueil promotions & Valorisation locale' }
+      { src: 'images/Mywa/boutique.jpg', title: 'MaliShi — 01. Vitrine mobile des produits Karité' },
+      { src: 'images/Mywa/boutik.jpg', title: 'MaliShi — 02. Grille catalogue & Filtres par gamme' },
+      { src: 'images/Mywa/menu.jpg', title: 'MaliShi — 03. Navigation catalogue & Catégories' },
+      { src: 'images/Mywa/home 1.jpg', title: 'MaliShi — 04. Accueil promotions & Valorisation locale' }
     ]
   },
   quantix: {
     device: 'desktop',
     url: 'https://quantix.thl.ml/admin/dashboard/stocks',
     items: [
-      { src: 'images/Screenshot_20260916_165238.jpg', title: 'Quantix ERP — 01. Tableau de bord des stocks & Vue d\'ensemble' },
-      { src: 'images/Screenshot_20260916_165249.jpg', title: 'Quantix ERP — 02. Alertes automatiques de rupture & Commandes' },
-      { src: 'images/Produit.jpg', title: 'Quantix ERP — 03. Fiche article, codes-barres & Traçabilité' },
-      { src: 'images/menu.jpg', title: 'Quantix ERP — 04. Statistiques mensuelles, valorisation & Inventaire' }
+      { src: 'images/Mywa/Screenshot_20260916_165238.jpg', title: 'Quantix ERP — 01. Tableau de bord des stocks & Vue d\'ensemble' },
+      { src: 'images/Mywa/Screenshot_20260916_165249.jpg', title: 'Quantix ERP — 02. Alertes automatiques de rupture & Commandes' },
+      { src: 'images/Mywa/Dashboard/Dashboard (5).png', title: 'Quantix ERP — 03. Fiche article, codes-barres & Traçabilité' },
+      { src: 'images/Mywa/Dashboard/Dashboard (6).png', title: 'Quantix ERP — 04. Statistiques mensuelles, valorisation & Inventaire' }
     ]
   },
   paie: {
     device: 'desktop',
     url: 'https://rh-paie.enterprise.ml/admin/payroll',
     items: [
-      { src: 'images/Screenshot_20260916_165152.jpg', title: 'Gestion de Paie — 01. Organigramme dynamique d\'entreprise' },
-      { src: 'images/Screenshot_20260916_165211.jpg', title: 'Gestion de Paie — 02. Moteur de calcul des salaires & Cotisations' },
-      { src: 'images/Screenshot_20260916_165222.jpg', title: 'Gestion de Paie — 03. Planning des congés payés & Absences' },
-      { src: 'images/Screenshot_20260916_165229.jpg', title: 'Gestion de Paie — 04. Bulletins de paie & Export comptable' }
+      { src: 'images/Mywa/Dashboard/Dashboard (7).png', title: 'Gestion de Paie — 01. Organigramme dynamique d\'entreprise' },
+      { src: 'images/Mywa/Dashboard/Dashboard (8).png', title: 'Gestion de Paie — 02. Moteur de calcul des salaires & Cotisations' },
+      { src: 'images/Mywa/Dashboard/Dashboard (9).png', title: 'Gestion de Paie — 03. Planning des congés payés & Absences' },
+      { src: 'images/Mywa/Dashboard/Dashboard (10).png', title: 'Gestion de Paie — 04. Bulletins de paie & Export comptable' }
     ]
   },
   sport: {
     device: 'desktop',
     url: 'https://sport.federation.ml/athletes/monitor',
     items: [
-      { src: 'images/Screenshot_20260916_165019.jpg', title: 'Min Digital Sport — 01. Suivi des performances athlètes' },
-      { src: 'images/Screenshot_20260916_165022.jpg', title: 'Min Digital Sport — 02. Calendrier des compétitions sportives' },
-      { src: 'images/Screenshot_20260916_165056.jpg', title: 'Min Digital Sport — 03. Fiche joueur détaillée & Statistiques' },
-      { src: 'images/Screenshot_20260916_165101.jpg', title: 'Min Digital Sport — 04. Médias & Rapports de match' }
+      { src: 'images/Mywa/Dashboard/Dashboard (11).png', title: 'Min Digital Sport — 01. Suivi des performances athlètes' },
+      { src: 'images/Mywa/Dashboard/Dashboard (1).png', title: 'Min Digital Sport — 02. Calendrier des compétitions sportives' },
+      { src: 'images/Mywa/Dashboard/Dashboard (2).png', title: 'Min Digital Sport — 03. Fiche joueur détaillée & Statistiques' },
+      { src: 'images/Mywa/Dashboard/Dashboard (3).png', title: 'Min Digital Sport — 04. Médias & Rapports de match' }
     ]
   },
   hewo: {
     device: 'mobile',
     url: 'https://hewo-vtc.app',
     items: [
-      { src: 'images/Screenshot_20260916_165115.jpg', title: 'Hewo VTC — 01. Réservation de course passager' },
-      { src: 'images/Screenshot_20260916_165135.jpg', title: 'Hewo VTC — 02. Suivi GPS temps réel du chauffeur' },
-      { src: 'images/Screenshot_20260916_165143.jpg', title: 'Hewo VTC — 03. Historique des trajets & Facturation' },
-      { src: 'images/Screenshot_20260916_165148.jpg', title: 'Hewo VTC — 04. Dashboard dispatching centralisé' }
+      { src: 'images/Mywa/Screenshot_20260916_165135.jpg', title: 'Hewo VTC — 01. Réservation de course passager' },
+      { src: 'images/Mywa/Screenshot_20260916_165143.jpg', title: 'Hewo VTC — 02. Suivi GPS temps réel du chauffeur' },
+      { src: 'images/Mywa/Screenshot_20260916_165148.jpg', title: 'Hewo VTC — 03. Historique des trajets & Facturation' },
+      { src: 'images/Mywa/home 1.jpg', title: 'Hewo VTC — 04. Dashboard dispatching centralisé' }
     ]
   },
   appgest: {
     device: 'desktop',
     url: 'https://appgest.logistics.ml/dispatching',
     items: [
-      { src: 'images/Screenshot_20260916_165001.jpg', title: 'AppGest — 01. Gestion logistique des tournées' },
-      { src: 'images/Screenshot_20260916_165006.jpg', title: 'AppGest — 02. Validation de livraison mobile' },
-      { src: 'images/transct.jpg', title: 'AppGest — 03. Suivi des commandes & Bons de livraison' },
-      { src: 'images/home.jpg', title: 'AppGest — 04. Dashboard dispatching & Flotte' }
+      { src: 'images/Mywa/Dashboard/Dashboard (4).png', title: 'AppGest — 01. Gestion logistique des tournées' },
+      { src: 'images/Mywa/Dashboard/Dashboard (5).png', title: 'AppGest — 02. Validation de livraison mobile' },
+      { src: 'images/Mywa/Dashboard/Dashboard (6).png', title: 'AppGest — 03. Suivi des commandes & Bons de livraison' },
+      { src: 'images/Mywa/Dashboard/Dashboard (7).png', title: 'AppGest — 04. Dashboard dispatching & Flotte' }
     ]
   }
 };
