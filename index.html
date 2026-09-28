@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portfolio de Cheickna Omar Diakité — Développeur Full Stack Java/Spring Boot, Angular, Flutter. Bamako, Mali." />
+  <meta property="og:title" content="Cheickna Omar Diakité | Full Stack Developer" />
+  <meta property="og:description"
+    content="Développeur Full Stack passionné — Java · Angular · Flutter — De Bamako au monde." />
+  <title>Cheickna Omar Diakité | Full Stack Developer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════ CURSOR ═══════════════════ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ═══════════════════ NOISE OVERLAY ═══════════════════ -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ═══════════════════ ADINKRA BG SVG ═══════════════════ -->
+  <div class="adinkra-bg" aria-hidden="true">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" class="adinkra-svg">
+      <g opacity="0.04" fill="none" stroke="#C9A84C" stroke-width="1.5">
+        <circle cx="300" cy="300" r="280" />
+        <circle cx="300" cy="300" r="200" />
+        <circle cx="300" cy="300" r="120" />
+        <line x1="20" y1="300" x2="580" y2="300" />
+        <line x1="300" y1="20" x2="300" y2="580" />
+        <line x1="102" y1="102" x2="498" y2="498" />
+        <line x1="498" y1="102" x2="102" y2="498" />
+        <rect x="260" y="260" width="80" height="80" rx="4" />
+        <rect x="240" y="240" width="120" height="120" rx="8" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- ═══════════════════ LAYOUT WRAPPER ═══════════════════ -->
+  <div class="layout">
+
+    <!-- ═══════════════ SIDEBAR ═══════════════ -->
+    <aside class="sidebar" id="sidebar">
+
+      <!-- Logo -->
+      <a href="#hero" class="sidebar-logo" id="logoLink">
+        <span class="logo-glyph">Co.Diakité</span>
+      </a>
+
+      <!-- Nav -->
+      <nav class="sidebar-nav" aria-label="Navigation principale">
+        <ul>
+          <li>
+            <a href="#about" class="nav-item" data-section="about" id="nav-about">
+              <span class="nav-line"></span>
+              <span class="nav-num">01</span>
+              <span class="nav-label">À Propos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="nav-item" data-section="experience" id="nav-experience">
+              <span class="nav-line"></span>
+              <span class="nav-num">02</span>
+              <span class="nav-label">Expérience</span>
+            </a>
+          </li>
+          <li>
+            <a href="#projects" class="nav-item" data-section="projects" id="nav-projects">
+              <span class="nav-line"></span>
+              <span class="nav-num">03</span>
+              <span class="nav-label">Projets</span>
+            </a>
+          </li>
+          <li>
+            <a href="#skills" class="nav-item" data-section="skills" id="nav-skills">
+              <span class="nav-line"></span>
+              <span class="nav-num">04</span>
+              <span class="nav-label">Compétences</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-item" data-section="contact" id="nav-contact">
+              <span class="nav-line"></span>
+              <span class="nav-num">05</span>
+              <span class="nav-label">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Socials -->
+      <div class="sidebar-socials">
+        <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener noreferrer" class="s-link" title="GitHub"
+          id="sl-github">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/cheickna_omar_diakite/" target="_blank" rel="noopener noreferrer"
+          class="s-link" title="Instagram" id="sl-instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61564818421399&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CN84uxz5g%2F#"
+          target="_blank" rel="noopener noreferrer" class="s-link" title="Facebook" id="sl-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="mailto:Cheickodi5@gmail.com" class="s-link" title="Email" id="sl-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <div class="social-line"></div>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </aside>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main class="main-content" id="mainContent">
+
+      <!-- ══════════════ HERO ══════════════ -->
+      <section class="hero-section" id="hero">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+
+        <div class="hero-inner">
+          <div class="hero-greeting">
+            <span class="mono-text">Bonjour, je suis</span>
+          </div>
+
+          <h1 class="hero-name" id="heroName">
+            Cheickna<br />
+            <span class="name-gold">Omar</span><br />
+            Diakité.
+          </h1>
+
+          <div class="hero-role">
+            <span class="role-prefix">_</span>
+            <span class="typed-text" id="typedText"></span>
+            <span class="typed-cursor">|</span>
+          </div>
+
+          <p class="hero-bio">
+            Ingénieur Full Stack passionné par la création de solutions numériques
+            innovantes depuis <strong>Bamako, Mali</strong>. Je construis des
+            expériences numériques complètes &mdash; du backend robuste aux interfaces
+            élégantes et aux apps mobiles performantes.
+          </p>
+
+          <div class="hero-kente-divider" aria-hidden="true">
+            <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
+              <g fill="#C9A84C" opacity="0.6">
+                <rect x="0" y="7" width="8" height="6" rx="1" />
+                <rect x="12" y="5" width="4" height="10" rx="1" />
+                <rect x="20" y="7" width="8" height="6" rx="1" />
+                <rect x="32" y="5" width="4" height="10" rx="1" />
+                <rect x="40" y="7" width="8" height="6" rx="1" />
+                <rect x="52" y="5" width="4" height="10" rx="1" />
+                <rect x="60" y="7" width="8" height="6" rx="1" />
+                <rect x="72" y="5" width="4" height="10" rx="1" />
+                <rect x="80" y="7" width="8" height="6" rx="1" />
+                <rect x="92" y="5" width="4" height="10" rx="1" />
+              </g>
+              <line x1="110" y1="10" x2="400" y2="10" stroke="#C9A84C" stroke-width="0.5" opacity="0.3" />
+            </svg>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn-gold" id="btnProjects">
+              <span>Voir mes Projets</span>
+              <i class="fas fa-arrow-down"></i>
+            </a>
+            <a href="#contact" class="btn-outline" id="btnContact">
+              <span>Me Contacter</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num" data-target="1100 ">0</span>
+              <span class="stat-lbl">Contributions GitHub</span>
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat">
+              <span class="stat-num" data-target="12">0</span>
+              <span class="stat-lbl">Projets livrés</span>
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat">
+              <span class="stat-num" data-target="3">0</span>
+              <span class="stat-lbl">Stacks maîtrisées</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-photo-col">
+          <div class="photo-frame">
+            <div class="photo-kente-border" aria-hidden="true"></div>
+            <img src="images/Cheickna Omar Diakité.JPG" alt="Cheickna Omar Diakité" class="hero-photo" />
+            <div class="photo-glow-ring"></div>
+          </div>
+          <div class="photo-badge badge-available">
+            <span class="pulse-dot"></span>
+            <span>Disponible</span>
+          </div>
+          <div class="photo-badge badge-location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Bamako, Mali</span>
+          </div>
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="true">
+          <div class="scroll-bar"></div>
+          <span>scroll</span>
+        </div>
+      </section>
+
+      <!-- ══════════════ ABOUT ══════════════ -->
+      <section class="section" id="about">
+        <div class="section-inner">
+          <header class="section-header">
+            <span class="section-num mono-text">01.</span>
+            <h2 class="section-title">À Propos</h2>
+            <div class="section-rule"></div>
+          </header>
+
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                Je suis <strong class="gold-text">Cheickna Omar Diakité</strong>,
+                Ingénieur Réseau &amp; Télécom, Développeur Full Stack et Designer Graphique
+                basé à <strong class="gold-text">Bamako, Mali</strong>.
+              </p>
+              <p>
+                Passionné par la création de solutions numériques complètes, je travaille chez
+                <strong>THL Technologies</strong> où je conçois et développe des applications
+                de bout en bout &mdash; du backend robuste en <strong>Java/Spring Boot</strong>, aux
+                interfaces <strong>Angular</strong> élégantes, jusqu'aux apps <strong>Flutter</strong> performantes.
+              </p>
+              <p>
+                Entrepreneur et formateur, je dirige également <strong>Pixel Addict</strong>
+                (studio de design graphique) et <strong>Horizon X</strong> (centre de formation),
+                contribuant ainsi à l'essor numérique du Mali.
+              </p>
+
+              <div class="about-info-list">
+                <div class="info-row" id="info-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Bamako, Djicoroni ACI, Mali</span>
+                </div>
+                <div class="info-row" id="info-company">
+                  <i class="fas fa-building"></i>
+                  <span>THL Technologies</span>
+                </div>
+                <div class="info-row" id="info-edu">
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>Licence Réseaux &amp; Télécom</span>
+                </div>
+                <div class="info-row" id="info-passion">
+                  <i class="fas fa-heart"></i>
+                  <span>Football · Manga · Innovation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-cards-col">
+              <div class="skill-card" id="sc-backend">
+                <div class="skill-card-icon"><i class="fas fa-server"></i></div>
+                <div>
+                  <h3>Backend</h3>
+                  <p>Java · Spring Boot · REST API · Firebase · Microservices</p>
+                </div>
+              </div>
+              <div class="skill-card" id="sc-frontend">
+                <div class="skill-card-icon angular"><i class="fab fa-angular"></i></div>
+                <div>
+                  <h3>Frontend</h3>
+                  <p>Angular · TypeScript · RxJS · Material · Responsive UI</p>
+                </div>
+              </div>
+              <div class="skill-card" id="sc-mobile">
+                <div class="skill-card-icon mobile"><i class="fas fa-mobile-alt"></i></div>
+                <div>
+                  <h3>Mobile</h3>
+                  <p>Flutter · Dart · Firebase · Push Notif · Cross-platform</p>
+                </div>
+              </div>
+              <div class="skill-card" id="sc-design">
+                <div class="skill-card-icon design"><i class="fas fa-palette"></i></div>
+                <div>
+                  <h3>Design</h3>
+                  <p>UI/UX · Photoshop · Illustrator · InDesign · Branding</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════ EXPERIENCE ══════════════ -->
+      <section class="section section-alt" id="experience">
+        <div class="section-inner">
+          <header class="section-header">
+            <span class="section-num mono-text">02.</span>
+            <h2 class="section-title">Expérience &amp; Formation</h2>
+            <div class="section-rule"></div>
+          </header>
+
+          <div class="timeline-tabs-wrapper">
+            <div class="tab-list" role="tablist" aria-label="Expériences">
+              <button class="tab-btn active" role="tab" data-tab="thl" id="tab-thl" aria-selected="true">THL
+                Technologies</button>
+              <button class="tab-btn" role="tab" data-tab="untech" id="tab-untech" aria-selected="false">UNTECH</button>
+              <button class="tab-btn" role="tab" data-tab="nala" id="tab-nala" aria-selected="false">NALA</button>
+              <button class="tab-btn" role="tab" data-tab="crea" id="tab-crea" aria-selected="false">Créa
+                Doumanba</button>
+              <button class="tab-btn" role="tab" data-tab="edu" id="tab-edu" aria-selected="false">Formation</button>
+            </div>
+
+            <div class="tab-panels">
+              <div class="tab-panel active" id="panel-thl" role="tabpanel">
+                <h3 class="exp-title">Développeur Full Stack / Architecte <span class="gold-text">@ THL
+                    Technologies</span></h3>
+                <p class="exp-period mono-text">2024 – 2025</p>
+                <ul class="exp-list">
+                  <li>Développement complet de <strong>Mywa Marketplace &amp; Wallet</strong> — Flutter, Angular, Spring
+                    Boot, Firebase</li>
+                  <li>Architecture et développement de <strong>CID Core Banking</strong> — modules Collect &amp; Client
+                    mobile</li>
+                  <li>Conception de <strong>MaliShi</strong> (e-commerce karité), <strong>Hewo VTC</strong> (transport),
+                    <strong>Min Digital Sport</strong>
+                  </li>
+                  <li>Développement de logiciels RH/Paie, gestion de stock (Quantix), distribution (AppGest)</li>
+                  <li>Mise en place d'architectures microservices REST avec Spring Boot</li>
+                </ul>
+                <div class="exp-tags">
+                  <span>Java</span><span>Spring
+                    Boot</span><span>Angular</span><span>Flutter</span><span>Firebase</span><span>MySQL</span>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="panel-untech" role="tabpanel">
+                <h3 class="exp-title">Maintenance &amp; Réseaux <span class="gold-text">@ UNTECH</span></h3>
+                <p class="exp-period mono-text">2023</p>
+                <ul class="exp-list">
+                  <li>Maintenance informatique et support technique avancé</li>
+                  <li>Configuration et sécurisation des infrastructures réseau</li>
+                  <li>Diagnostic et résolution de pannes matérielles et logicielles</li>
+                  <li>Documentation des procédures techniques</li>
+                </ul>
+                <div class="exp-tags">
+                  <span>Réseaux</span><span>Sécurité</span><span>Maintenance</span><span>Cisco</span>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="panel-nala" role="tabpanel">
+                <h3 class="exp-title">Designer Graphique <span class="gold-text">@ NALA</span></h3>
+                <p class="exp-period mono-text">2023</p>
+                <ul class="exp-list">
+                  <li>Création d'identités visuelles complètes et chartes graphiques</li>
+                  <li>Conception de supports de communication print &amp; digital</li>
+                  <li>Production de contenus graphiques premium pour la marque</li>
+                  <li>Direction artistique pour campagnes marketing</li>
+                </ul>
+                <div class="exp-tags">
+                  <span>Photoshop</span><span>Illustrator</span><span>Branding</span><span>InDesign</span>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="panel-crea" role="tabpanel">
+                <h3 class="exp-title">Designer Graphique <span class="gold-text">@ Créa Doumanba</span></h3>
+                <p class="exp-period mono-text">2022</p>
+                <ul class="exp-list">
+                  <li>Première expérience professionnelle en design graphique</li>
+                  <li>Création de contenus visuels pour la marque Doumanba</li>
+                  <li>Design de publications réseaux sociaux et flyers</li>
+                  <li>Collaboration avec l'équipe marketing</li>
+                </ul>
+                <div class="exp-tags">
+                  <span>Design Graphique</span><span>Photoshop</span><span>Réseaux Sociaux</span>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="panel-edu" role="tabpanel">
+                <h3 class="exp-title">Formation &amp; Certifications <span class="gold-text">@ Acadamies</span></h3>
+                <p class="exp-period mono-text">2019 – 2023</p>
+                <ul class="exp-list">
+                  <li><strong>Licence</strong> en Réseaux Informatiques &amp; Télécommunications</li>
+                  <li><strong>Certificat</strong> Maintenance &amp; Réparation Informatique</li>
+                  <li><strong>Thèse</strong> en Développement d'Applications</li>
+                  <li>Formation continue en développement mobile &amp; web (autodidacte)</li>
+                </ul>
+                <div class="exp-tags">
+                  <span>Licence</span><span>Certification</span><span>Télécom</span><span>Dev Web</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════ PROJECTS ══════════════ -->
+      <section class="section" id="projects">
+        <div class="section-inner">
+          <header class="section-header">
+            <span class="section-num mono-text">03.</span>
+            <h2 class="section-title">Projets Notables</h2>
+            <div class="section-rule"></div>
+          </header>
+
+          <!-- Featured projects -->
+          <div class="featured-projects">
+
+            <!-- MYWA -->
+            <article class="feat-project" id="fp-mywa">
+              <div class="feat-project-content">
+                <!-- En-tête avec Logo du Projet -->
+                <div class="project-brand-badge">
+                  <div class="project-logo-box">
+                    <img src="images/logo/mywa.png" alt="Logo Mywa" class="project-logo-img"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div class="project-logo-fallback"><i class="fas fa-wallet"></i></div>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text">01 · Application Mobile &amp; Wallet</span>
+                    <h3 class="feat-project-title">Mywa Marketplace</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Marketplace &amp; wallet mobile complet avec gestion de boutiques, catalogues produits, commandes,
+                    stock, livraison et notifications push en temps réel. Développé sur une architecture microservices
+                    Spring Boot.</p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fab fa-flutter"></i> Flutter</li>
+                  <li><i class="fab fa-angular"></i> Angular</li>
+                  <li><i class="fas fa-server"></i> Spring Boot</li>
+                  <li><i class="fas fa-fire"></i> Firebase</li>
+                  <li><i class="fas fa-network-wired"></i> REST API</li>
+                </ul>
+
+                <!-- Preuves visuelles interactives (1 à 4 images de références) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 4 Captures de référence :</span>
+                  <div class="proof-thumbs" data-gallery="mywa">
+                    <button class="proof-thumb active" data-img="images/home.jpg"
+                      data-caption="Mywa — Accueil &amp; Boutiques en vedette" title="Capture 1 : Accueil">
+                      <img src="images/home.jpg" alt="Accueil" />
+                      <span>01. Accueil</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/boutique.jpg"
+                      data-caption="Mywa — Catalogue boutique &amp; Produits" title="Capture 2 : Boutique">
+                      <img src="images/boutique.jpg" alt="Boutique" />
+                      <span>02. Boutique</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Produit.jpg"
+                      data-caption="Mywa — Fiche produit détaillée &amp; Panier" title="Capture 3 : Produit">
+                      <img src="images/Produit.jpg" alt="Produit" />
+                      <span>03. Produit</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Login.jpg"
+                      data-caption="Mywa — Écran de Connexion &amp; Authentification sécurisée"
+                      title="Capture 4 : Login">
+                      <img src="images/Login.jpg" alt="Login" />
+                      <span>04. Connexion</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="mywa" data-start="0">
+                    <i class="fas fa-expand"></i> Inspecter les 4 preuves HD
+                  </button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener" class="feat-link" id="fl-mywa-gh"
+                    title="Voir le Code GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Mockup Smartphone Mobile -->
+              <div class="feat-project-device">
+                <div class="phone-mockup" data-gallery-target="mywa">
+                  <div class="phone-speaker"></div>
+                  <div class="phone-camera"></div>
+                  <div class="phone-screen" data-gallery-screen="mywa">
+                    <img src="images/home.jpg" alt="Mywa Interface Mobile" id="phone-img-mywa"
+                      class="phone-display-img" />
+                    <div class="phone-screen-overlay" data-gallery="mywa" data-start="0">
+                      <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</span>
+                    </div>
+                  </div>
+                  <div class="phone-home-indicator"></div>
+                </div>
+              </div>
+            </article>
+
+            <!-- CID BANKING -->
+            <article class="feat-project feat-reverse" id="fp-cid">
+              <div class="feat-project-content">
+                <!-- En-tête avec Logo du Projet -->
+                <div class="project-brand-badge">
+                  <div class="project-logo-box fintech">
+                    <img src="images/logo/cid.png" alt="Logo CID" class="project-logo-img"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div class="project-logo-fallback"><i class="fas fa-building-columns"></i></div>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text">02 · Mobile Fintech &amp; Banking</span>
+                    <h3 class="feat-project-title">CID Core Banking</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Application bancaire mobile de pointe — modules Collect &amp; Client avec gestion des transactions,
+                    historique filtrable sur 3 mois, détails des mouvements et session chiffrée JWT.</p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fab fa-flutter"></i> Flutter</li>
+                  <li><i class="fas fa-server"></i> Spring Boot</li>
+                  <li><i class="fas fa-shield-halved"></i> JWT &amp; RSA</li>
+                  <li><i class="fas fa-database"></i> PostgreSQL</li>
+                </ul>
+
+                <!-- Preuves visuelles (1 à 4 captures) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 4 Captures de référence :</span>
+                  <div class="proof-thumbs" data-gallery="cid">
+                    <button class="proof-thumb active" data-img="images/transct.jpg"
+                      data-caption="CID Banking — Liste &amp; Historique des transactions"
+                      title="Capture 1 : Transactions">
+                      <img src="images/transct.jpg" alt="Transactions" />
+                      <span>01. Opérations</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Screenshot_20260916_165001.jpg"
+                      data-caption="CID Banking — Tableau de bord compte &amp; Solde" title="Capture 2 : Dashboard">
+                      <img src="images/Screenshot_20260916_165001.jpg" alt="Solde" />
+                      <span>02. Solde</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Screenshot_20260916_165006.jpg"
+                      data-caption="CID Banking — Validation et reçu de transfert" title="Capture 3 : Virement">
+                      <img src="images/Screenshot_20260916_165006.jpg" alt="Reçu" />
+                      <span>03. Transfert</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Screenshot_20260916_165009.jpg"
+                      data-caption="CID Banking — Détails d'opération &amp; Relevé bancaire" title="Capture 4 : Détail">
+                      <img src="images/Screenshot_20260916_165009.jpg" alt="Détail" />
+                      <span>04. Relevé</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="cid" data-start="0">
+                    <i class="fas fa-expand"></i> Inspecter les 4 preuves HD
+                  </button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener" class="feat-link" id="fl-cid-gh"
+                    title="Voir le Code GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Mockup Smartphone Mobile -->
+              <div class="feat-project-device">
+                <div class="phone-mockup" data-gallery-target="cid">
+                  <div class="phone-speaker"></div>
+                  <div class="phone-camera"></div>
+                  <div class="phone-screen" data-gallery-screen="cid">
+                    <img src="images/transct.jpg" alt="CID Banking Interface" id="phone-img-cid"
+                      class="phone-display-img" />
+                    <div class="phone-screen-overlay" data-gallery="cid" data-start="0">
+                      <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</span>
+                    </div>
+                  </div>
+                  <div class="phone-home-indicator"></div>
+                </div>
+              </div>
+            </article>
+
+            <!-- MALISHI -->
+            <article class="feat-project" id="fp-malishi">
+              <div class="feat-project-content">
+                <!-- En-tête avec Logo du Projet -->
+                <div class="project-brand-badge">
+                  <div class="project-logo-box agro">
+                    <img src="images/logo/malishi.png" alt="Logo MaliShi" class="project-logo-img"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div class="project-logo-fallback"><i class="fas fa-leaf"></i></div>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text">03 · E-Commerce &amp; Agro-business</span>
+                    <h3 class="feat-project-title">MaliShi — Produits Karité</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Plateforme e-commerce pour la valorisation du karité malien — Dashboard administrateur de gestion
+                    des stocks et application mobile d'achat en ligne avec suivi d'expédition.</p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fab fa-flutter"></i> Flutter</li>
+                  <li><i class="fab fa-angular"></i> Angular</li>
+                  <li><i class="fas fa-server"></i> Spring Boot</li>
+                  <li><i class="fas fa-database"></i> MySQL</li>
+                </ul>
+
+                <!-- Preuves visuelles (1 à 4 captures) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 4 Captures de référence :</span>
+                  <div class="proof-thumbs" data-gallery="malishi">
+                    <button class="proof-thumb active" data-img="images/boutique.jpg"
+                      data-caption="MaliShi — Vitrine &amp; Rayons de produits Karité" title="Capture 1 : Vitrine">
+                      <img src="images/boutique.jpg" alt="Vitrine" />
+                      <span>01. Vitrine</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/bouti.jpg"
+                      data-caption="MaliShi — Grille des articles &amp; Filtres par catégorie"
+                      title="Capture 2 : Catalogue">
+                      <img src="images/bouti.jpg" alt="Catalogue" />
+                      <span>02. Catalogue</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/boutik.jpg"
+                      data-caption="MaliShi — Panier d'achat &amp; Validation commande" title="Capture 3 : Panier">
+                      <img src="images/boutik.jpg" alt="Panier" />
+                      <span>03. Panier</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/home 1.jpg"
+                      data-caption="MaliShi — Page d'accueil mobile &amp; Promotions" title="Capture 4 : Accueil">
+                      <img src="images/home 1.jpg" alt="Accueil" />
+                      <span>04. Accueil</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="malishi" data-start="0">
+                    <i class="fas fa-expand"></i> Inspecter les 4 preuves HD
+                  </button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener" class="feat-link"
+                    id="fl-malishi-gh" title="Voir le Code GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Mockup Smartphone Mobile -->
+              <div class="feat-project-device">
+                <div class="phone-mockup" data-gallery-target="malishi">
+                  <div class="phone-speaker"></div>
+                  <div class="phone-camera"></div>
+                  <div class="phone-screen" data-gallery-screen="malishi">
+                    <img src="images/boutique.jpg" alt="MaliShi Interface Mobile" id="phone-img-malishi"
+                      class="phone-display-img" />
+                    <div class="phone-screen-overlay" data-gallery="malishi" data-start="0">
+                      <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</span>
+                    </div>
+                  </div>
+                  <div class="phone-home-indicator"></div>
+                </div>
+              </div>
+            </article>
+
+            <!-- QUANTIX — DASHBOARD ERP & GESTION DE STOCKS (Format Ordinateur / Desktop) -->
+            <article class="feat-project feat-reverse" id="fp-quantix">
+              <div class="feat-project-content">
+                <!-- En-tête avec Logo du Projet -->
+                <div class="project-brand-badge">
+                  <div class="project-logo-box dashboard-logo">
+                    <img src="images/logo/quantix.png" alt="Logo Quantix" class="project-logo-img"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div class="project-logo-fallback"><i class="fas fa-boxes-stacked"></i></div>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text">04 · Dashboard Web &amp; ERP Industriel</span>
+                    <h3 class="feat-project-title">Quantix — Stock &amp; Inventaire</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Plateforme de gestion d'inventaire et ERP complet avec tableaux de bord analytiques, alertes en
+                    temps réel de seuil critique, traçabilité des lots et génération automatisée de rapports comptables.
+                  </p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fab fa-angular"></i> Angular 17</li>
+                  <li><i class="fas fa-server"></i> Spring Boot 3</li>
+                  <li><i class="fas fa-chart-line"></i> Chart.js &amp; D3</li>
+                  <li><i class="fas fa-database"></i> MySQL</li>
+                  <li><i class="fas fa-file-pdf"></i> Export PDF/Excel</li>
+                </ul>
+
+                <!-- Preuves visuelles (1 à 4 captures de Dashboard) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-desktop"></i> 4 Preuves Dashboard :</span>
+                  <div class="proof-thumbs" data-gallery="quantix">
+                    <button class="proof-thumb active" data-img="images/Screenshot_20260916_165238.jpg"
+                      data-caption="Quantix — Vue globale Dashboard &amp; Métriques en direct"
+                      title="Capture 1 : Dashboard">
+                      <img src="images/Screenshot_20260916_165238.jpg" alt="Dashboard" />
+                      <span>01. Dashboard</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Screenshot_20260916_165249.jpg"
+                      data-caption="Quantix — Alertes ruptures de stocks &amp; Réapprovisionnement"
+                      title="Capture 2 : Alertes">
+                      <img src="images/Screenshot_20260916_165249.jpg" alt="Alertes" />
+                      <span>02. Alertes</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Produit.jpg"
+                      data-caption="Quantix — Fiche article, codes-barres &amp; Historique"
+                      title="Capture 3 : Fiche Stock">
+                      <img src="images/Produit.jpg" alt="Fiche Stock" />
+                      <span>03. Stocks</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/menu.jpg"
+                      data-caption="Quantix — Statistiques d'inventaire mensuel &amp; Rapports"
+                      title="Capture 4 : Rapports">
+                      <img src="images/menu.jpg" alt="Rapports" />
+                      <span>04. Rapports</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="quantix" data-device="desktop" data-start="0">
+                    <i class="fas fa-expand"></i> Inspecter le Dashboard HD
+                  </button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener" class="feat-link"
+                    id="fl-quantix-gh" title="Voir le Code GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Mockup Ordinateur Portable / Desktop Dashboard -->
+              <div class="feat-project-device desktop-device">
+                <div class="laptop-mockup" data-gallery-target="quantix">
+                  <!-- Écran supérieur du Laptop -->
+                  <div class="laptop-screen-bezel">
+                    <!-- Webcam -->
+                    <div class="laptop-camera">
+                      <span class="laptop-camera-lens"></span>
+                      <span class="laptop-camera-led"></span>
+                    </div>
+
+                    <!-- Barre de navigation Browser macOS -->
+                    <div class="laptop-browser-bar">
+                      <div class="browser-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                      </div>
+                      <div class="browser-tab-title">
+                        <i class="fas fa-boxes-stacked"></i> Quantix ERP — Dashboard Stock
+                      </div>
+                      <div class="browser-url-bar">
+                        <i class="fas fa-lock"></i>
+                        <span class="url-text">https://quantix.thl.ml/admin/dashboard</span>
+                      </div>
+                    </div>
+
+                    <!-- Affichage de l'écran du Laptop -->
+                    <div class="laptop-screen" data-gallery-screen="quantix">
+                      <img src="images/Screenshot_20260916_165238.jpg" alt="Quantix Dashboard Interface"
+                        id="phone-img-quantix" class="laptop-display-img" />
+                      <div class="laptop-screen-overlay" data-gallery="quantix" data-device="desktop" data-start="0">
+                        <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir en HD</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Base / Châssis inférieur du Laptop -->
+                  <div class="laptop-base">
+                    <div class="laptop-notch"></div>
+                  </div>
+                  <div class="laptop-reflection"></div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Other projects grid avec Logos et Preuves -->
+          <h3 class="other-projects-title">Autres Réalisations &amp; Dashboards</h3>
+          <div class="other-projects-grid">
+
+            <!-- Min Digital Sport -->
+            <div class="other-card" id="oc-sport">
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/logo/sport.png" alt="Logo Sport" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-futbol"></i></div>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="sport" data-start="0" title="Voir les captures"><i
+                      class="fas fa-images"></i> 4 Preuves</button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Mobile &amp; Web</span>
+              <h4>Min Digital Sport</h4>
+              <p>Plateforme numérique sportive pour le suivi des athlètes — gestion des rôles, géolocalisation des
+                événements sportifs et upload de fichiers média.</p>
+              <ul class="other-tech">
+                <li>Flutter</li>
+                <li>Angular</li>
+                <li>Spring Boot</li>
+              </ul>
+            </div>
+
+            <!-- Hewo VTC -->
+            <div class="other-card" id="oc-hewo">
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/logo/hewo.png" alt="Logo Hewo" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-car-side"></i></div>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="hewo" data-start="0" title="Voir les captures"><i
+                      class="fas fa-images"></i> 4 Preuves</button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Mobile VTC &amp; Tracking</span>
+              <h4>Hewo VTC</h4>
+              <p>Application VTC complète — app passagers et chauffeurs, dashboard d'administration centralisé, calcul
+                d'itinéraires et tracking GPS temps réel.</p>
+              <ul class="other-tech">
+                <li>Flutter</li>
+                <li>Angular</li>
+                <li>Spring Boot</li>
+                <li>WebSockets</li>
+              </ul>
+            </div>
+
+            <!-- Gestion de Paie (Dashboard) -->
+            <div class="other-card" id="oc-paie">
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/logo/paie.png" alt="Logo Paie" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-file-invoice-dollar"></i></div>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="paie" data-device="desktop" data-start="0"
+                    title="Voir les captures"><i class="fas fa-desktop"></i> Dashboard</button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Dashboard Web RH</span>
+              <h4>Gestion de Paie &amp; RH</h4>
+              <p>Système de gestion des ressources humaines — organigramme interactif dynamique, suivi des congés payés,
+                fiches de paie journalières et déclarations.</p>
+              <ul class="other-tech">
+                <li>Angular</li>
+                <li>TypeScript</li>
+                <li>RxJS</li>
+                <li>Spring Boot</li>
+              </ul>
+            </div>
+
+            <!-- Quantix — Stock (Dashboard) -->
+            <div class="other-card" id="oc-quantix">
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/logo/quantix.png" alt="Logo Quantix" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-boxes-stacked"></i></div>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="quantix" data-device="desktop" data-start="0"
+                    title="Voir les captures"><i class="fas fa-desktop"></i> Dashboard</button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Dashboard Inventaire</span>
+              <h4>Quantix — Stock</h4>
+              <p>Tableau de bord de gestion de stocks &amp; inventaires industriels — alertes intelligentes de rupture,
+                graphiques d'évolution et export PDF/Excel.</p>
+              <ul class="other-tech">
+                <li>Angular</li>
+                <li>Spring Boot</li>
+                <li>MySQL</li>
+                <li>Chart.js</li>
+              </ul>
+            </div>
+
+            <!-- AppGest Dist (Mobile & Dashboard) -->
+            <div class="other-card" id="oc-appgest">
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/logo/appgest.png" alt="Logo AppGest" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-truck-ramp-box"></i></div>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="appgest" data-start="0" title="Voir les captures"><i
+                      class="fas fa-images"></i> 4 Preuves</button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Logistique &amp; Distribution</span>
+              <h4>AppGest Distribution</h4>
+              <p>Solution tout-en-un de gestion logistique — dispatching chauffeurs-livreurs, bordereaux de livraison
+                électroniques et rapports analytiques.</p>
+              <ul class="other-tech">
+                <li>Flutter</li>
+                <li>Angular</li>
+                <li>Spring Boot</li>
+              </ul>
+            </div>
+
+            <!-- Pixel Addict Studio (Branding / Design) -->
+            <div class="other-card" id="oc-pixel">
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/logo/pixel.png" alt="Logo Pixel Addict" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-bezier-curve"></i></div>
+                </div>
+                <div class="other-links">
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Direction Artistique</span>
+              <h4>Pixel Addict Studio</h4>
+              <p>Mon agence de création visuelle — chartes graphiques complètes, UI/UX design, identités de marque pour
+                Zabban Holding, Doumanba et THL Technologies.</p>
+              <ul class="other-tech">
+                <li>Figma</li>
+                <li>Photoshop</li>
+                <li>Illustrator</li>
+                <li>UI/UX</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════ SKILLS ══════════════ -->
+      <section class="section section-alt" id="skills">
+        <div class="section-inner">
+          <header class="section-header">
+            <span class="section-num mono-text">04.</span>
+            <h2 class="section-title">Stack Technique</h2>
+            <div class="section-rule"></div>
+          </header>
+
+          <div class="skills-layout">
+            <div class="skill-group" id="sg-backend">
+              <h3 class="skill-group-title"><i class="fas fa-server"></i> Backend</h3>
+              <div class="skill-bars">
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Java / Spring Boot</span><span class="s-pct">92%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill" style="--w:92%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>REST API / Microservices</span><span class="s-pct">88%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill" style="--w:88%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Firebase</span><span class="s-pct">85%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill" style="--w:85%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Python</span><span class="s-pct">75%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill" style="--w:75%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group" id="sg-frontend">
+              <h3 class="skill-group-title"><i class="fab fa-angular"></i> Frontend</h3>
+              <div class="skill-bars">
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Angular / TypeScript</span><span class="s-pct">90%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-angular" style="--w:90%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>HTML / CSS</span><span class="s-pct">95%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-angular" style="--w:95%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>RxJS / Angular Material</span><span class="s-pct">85%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-angular" style="--w:85%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group" id="sg-mobile">
+              <h3 class="skill-group-title"><i class="fas fa-mobile-alt"></i> Mobile</h3>
+              <div class="skill-bars">
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Flutter / Dart</span><span class="s-pct">93%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-mobile" style="--w:93%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Firebase Push Notif</span><span class="s-pct">88%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-mobile" style="--w:88%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>State Management</span><span class="s-pct">82%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-mobile" style="--w:82%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group" id="sg-design">
+              <h3 class="skill-group-title"><i class="fas fa-palette"></i> Design</h3>
+              <div class="skill-bars">
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Branding &amp; Identité</span><span class="s-pct">90%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-design" style="--w:90%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>Photoshop / Illustrator</span><span class="s-pct">88%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-design" style="--w:88%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar-item">
+                  <div class="skill-bar-label"><span>UI/UX Design</span><span class="s-pct">85%</span></div>
+                  <div class="skill-track">
+                    <div class="skill-fill fill-design" style="--w:85%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Marquee -->
+          <div class="marquee-wrapper" aria-hidden="true">
+            <div class="marquee-track">
+              <span class="tech-pill"><i class="fab fa-java"></i> Java</span>
+              <span class="tech-pill"><i class="fab fa-angular"></i> Angular</span>
+              <span class="tech-pill"><i class="fas fa-mobile-alt"></i> Flutter</span>
+              <span class="tech-pill"><i class="fab fa-python"></i> Python</span>
+              <span class="tech-pill"><i class="fas fa-fire"></i> Firebase</span>
+              <span class="tech-pill"><i class="fab fa-git-alt"></i> Git</span>
+              <span class="tech-pill"><i class="fas fa-database"></i> MySQL</span>
+              <span class="tech-pill"><i class="fas fa-leaf"></i> Spring Boot</span>
+              <span class="tech-pill"><i class="fab fa-docker"></i> Docker</span>
+              <span class="tech-pill"><i class="fas fa-paint-brush"></i> Photoshop</span>
+              <span class="tech-pill"><i class="fab fa-java"></i> Java</span>
+              <span class="tech-pill"><i class="fab fa-angular"></i> Angular</span>
+              <span class="tech-pill"><i class="fas fa-mobile-alt"></i> Flutter</span>
+              <span class="tech-pill"><i class="fab fa-python"></i> Python</span>
+              <span class="tech-pill"><i class="fas fa-fire"></i> Firebase</span>
+              <span class="tech-pill"><i class="fab fa-git-alt"></i> Git</span>
+              <span class="tech-pill"><i class="fas fa-database"></i> MySQL</span>
+              <span class="tech-pill"><i class="fas fa-leaf"></i> Spring Boot</span>
+              <span class="tech-pill"><i class="fab fa-docker"></i> Docker</span>
+              <span class="tech-pill"><i class="fas fa-paint-brush"></i> Photoshop</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════ CONTACT ══════════════ -->
+      <section class="section" id="contact">
+        <div class="section-inner">
+          <header class="section-header">
+            <span class="section-num mono-text">05.</span>
+            <h2 class="section-title">Travaillons Ensemble</h2>
+            <div class="section-rule"></div>
+          </header>
+
+          <div class="contact-layout">
+            <div class="contact-left">
+              <p class="contact-lead">
+                Un projet, une idée, une collaboration ? Ma boîte mail est toujours ouverte.
+                Que vous ayez une question ou souhaitiez simplement dire bonjour &mdash;
+                <strong class="gold-text">je vous répondrai !</strong>
+              </p>
+
+              <div class="contact-items">
+                <a href="mailto:Cheickodi5@gmail.com" class="contact-item" id="ci-email">
+                  <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                  <div>
+                    <span class="ci-label">Email</span>
+                    <span class="ci-value">Cheickodi5@gmail.com</span>
+                  </div>
+                </a>
+                <a href="tel:+22391690592" class="contact-item" id="ci-phone">
+                  <div class="ci-icon"><i class="fas fa-phone"></i></div>
+                  <div>
+                    <span class="ci-label">Téléphone</span>
+                    <span class="ci-value">+223 91 69 05 92</span>
+                  </div>
+                </a>
+                <div class="contact-item" id="ci-loc">
+                  <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                  <div>
+                    <span class="ci-label">Localisation</span>
+                    <span class="ci-value">Bamako, Djicoroni ACI, Mali</span>
+                  </div>
+                </div>
+              </div>
+
+              <a href="mailto:Cheickodi5@gmail.com" class="btn-gold large" id="btn-email-big">
+                <span>Envoyer un message</span>
+                <i class="fas fa-paper-plane"></i>
+              </a>
+            </div>
+
+            <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cfName">Nom complet</label>
+                  <input type="text" id="cfName" name="name" placeholder="Bintou Dansira" required />
+                </div>
+                <div class="form-group">
+                  <label for="cfEmail">Email</label>
+                  <input type="email" id="cfEmail" name="email" placeholder="Bin4eva@email.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cfSubject">Sujet</label>
+                <input type="text" id="cfSubject" name="subject" placeholder="Projet, collaboration, question..." />
+              </div>
+              <div class="form-group">
+                <label for="cfMessage">Message</label>
+                <textarea id="cfMessage" name="message" rows="5" placeholder="Décrivez votre projet ou votre demande..."
+                  required></textarea>
+              </div>
+              <button type="submit" class="btn-submit" id="btnSubmit">
+                <span>Envoyer</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+              <div class="form-success" id="formSuccess" style="display:none">
+                <i class="fas fa-check-circle"></i>
+                Message envoyé ! Je vous répondrai très vite.
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════ FOOTER ══════════════ -->
+      <footer class="footer">
+        <div class="kente-footer-bar" aria-hidden="true"></div>
+        <div class="footer-inner">
+          <div class="footer-logo">
+          </div>
+          <p class="footer-text">Conçu &amp; développé par <strong class="gold-text">Cheickna Omar Diakité</strong></p>
+          <p class="footer-sub mono-text">Bamako, Mali · Java · Angular · Flutter</p>
+          <div class="footer-socials">
+            <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener" id="fs-github"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/cheickna_omar_diakite/" target="_blank" rel="noopener"
+              id="fs-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1CN84uxz5g/" target="_blank" rel="noopener" id="fs-facebook"><i
+                class="fab fa-facebook"></i></a>
+            <a href="mailto:Cheickodi5@gmail.com" id="fs-email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+
+  </div><!-- /layout -->
+
+  <!-- Back to top -->
+  <button class="back-top" id="backToTop" aria-label="Retour en haut">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <nav class="mobile-nav">
+      <a href="#about" class="mobile-nav-link">01. À Propos</a>
+      <a href="#experience" class="mobile-nav-link">02. Expérience</a>
+      <a href="#projects" class="mobile-nav-link">03. Projets</a>
+      <a href="#skills" class="mobile-nav-link">04. Compétences</a>
+      <a href="#contact" class="mobile-nav-link">05. Contact</a>
+    </nav>
+  </div>
+
+  <!-- ══════════════ LIGHTBOX MODALE — PREUVES VISUELLES HD ══════════════ -->
+  <div class="proofs-lightbox" id="proofsLightbox" aria-hidden="true" role="dialog"
+    aria-label="Aperçu des preuves de projet">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-container">
+      <header class="lightbox-header">
+        <div class="lightbox-project-info">
+          <span class="lightbox-counter mono-text" id="lightboxCounter">1 / 4</span>
+          <h4 class="lightbox-caption" id="lightboxCaption">Titre de la preuve</h4>
+        </div>
+        <div class="lightbox-actions">
+          <a href="#" target="_blank" id="lightboxDownloadBtn" class="lightbox-btn-icon"
+            title="Ouvrir l'image en taille originale">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+          <button class="lightbox-btn-icon" id="lightboxCloseBtn" aria-label="Fermer la visionneuse">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="lightbox-body">
+        <button class="lightbox-nav-btn prev" id="lightboxPrev" aria-label="Image précédente">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="lightbox-viewport" id="lightboxViewport">
+          <!-- Cadre mockup mobile (si format mobile) -->
+          <div class="lightbox-phone-frame" id="lightboxPhoneFrame">
+            <div class="lightbox-phone-notch"></div>
+            <img src="" alt="Preuve mobile" id="lightboxMainImg" class="lightbox-img" />
+          </div>
+
+          <!-- Cadre mockup ordinateur / desktop (si format dashboard) -->
+          <div class="lightbox-laptop-frame" id="lightboxLaptopFrame">
+            <div class="lightbox-laptop-header">
+              <div class="browser-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="lightbox-laptop-url">
+                <i class="fas fa-lock"></i>
+                <span id="lightboxLaptopUrl">https://quantix.thl.ml/admin/dashboard</span>
+              </div>
+            </div>
+            <div class="lightbox-laptop-screen">
+              <img src="" alt="Preuve dashboard" id="lightboxDesktopImg" class="lightbox-desktop-display-img" />
+            </div>
+          </div>
+        </div>
+
+        <button class="lightbox-nav-btn next" id="lightboxNext" aria-label="Image suivante">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Miniatures en bas pour sauter directement à une preuve -->
+      <div class="lightbox-footer">
+        <div class="lightbox-thumbs" id="lightboxThumbs">
+          <!-- Généré dynamiquement en JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
