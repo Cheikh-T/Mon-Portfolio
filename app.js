@@ -405,7 +405,7 @@ function initBackToTop() {
    ══════════════════════════════════════════════════════════════════ */
 const CONTACT_EMAIL = 'Cheickodi5@gmail.com';
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
   const form = document.getElementById('contactForm');
   const successBox = document.getElementById('formSuccess');
@@ -454,45 +454,61 @@ function handleFormSubmit(e) {
     if (err) err.textContent = text;
   }
 
-  // 4. Préparation de l'e-mail complet
   const mailSubject = subject ? `[Portfolio] ${subject}` : `[Portfolio] Prise de contact de ${name}`;
   const mailBody = `Bonjour Cheickna,\n\n${message}\n\n---\nNom : ${name}\nEmail : ${email}`;
-
   const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-  const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
-  // 5. Animation et déclenchement immédiat
   btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-check"></i> E-mail prêt !';
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
 
-  // Ouvre le client de messagerie par défaut (Gmail mobile, Outlook, Apple Mail...)
-  window.location.href = mailtoUrl;
+  try {
+    const formData = new FormData(form);
+    formData.set('_subject', mailSubject);
 
-  // 6. Affichage du bandeau de confirmation avec boutons 1-clic directs
-  if (successBox) {
-    successBox.innerHTML = `
-      <i class="fas fa-check-circle" style="font-size:1.35rem;color:#4ADE80;margin-top:2px;"></i>
-      <div class="feedback-text">
-        <strong>Votre message est prêt pour ${CONTACT_EMAIL} !</strong>
-        <span>Votre application de messagerie a été ouverte. Si vous utilisez Gmail sur navigateur, vous pouvez aussi l'ouvrir directement ci-dessous :</span>
-        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;">
-          <a href="${gmailWebUrl}" target="_blank" rel="noopener" class="feedback-fallback-btn" style="background:var(--gold);color:#0A0705;border-color:var(--gold);">
-            <i class="fab fa-google"></i> Envoyer via Gmail Web
-          </a>
-          <a href="${mailtoUrl}" class="feedback-fallback-btn">
-            <i class="fas fa-paper-plane"></i> Relancer mon appli Mail
-          </a>
+    const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' }
+    });
+    const result = await response.json();
+
+    if (!response.ok || String(result.success).toLowerCase() !== 'true') {
+      throw new Error('Le service de messagerie a refusé le message.');
+    }
+
+    form.reset();
+    if (successBox) {
+      successBox.classList.remove('error');
+      successBox.classList.add('success');
+      successBox.innerHTML = `
+        <i class="fas fa-check-circle" aria-hidden="true"></i>
+        <div class="feedback-text">
+          <strong>Message transmis avec succès.</strong>
+          <span>Le service de messagerie a accepté votre message pour ${CONTACT_EMAIL}.</span>
         </div>
-      </div>
-    `;
-    successBox.style.display = 'flex';
-    successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  setTimeout(() => {
+      `;
+      successBox.style.display = 'flex';
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  } catch (error) {
+    if (successBox) {
+      successBox.classList.remove('success');
+      successBox.classList.add('error');
+      successBox.innerHTML = `
+        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+        <div class="feedback-text">
+          <strong>Le message n'a pas pu être transmis.</strong>
+          <span>Réessayez ou envoyez-le directement par e-mail.</span>
+          <a href="${mailtoUrl}" class="feedback-fallback-btn"><i class="fas fa-envelope"></i> Ouvrir un e-mail</a>
+        </div>
+      `;
+      successBox.style.display = 'flex';
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  } finally {
     btn.disabled = false;
     btn.innerHTML = '<span>Envoyer le Message</span><i class="fas fa-paper-plane"></i>';
-  }, 1800);
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════
