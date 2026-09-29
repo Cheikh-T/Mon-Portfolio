@@ -401,27 +401,98 @@ function initBackToTop() {
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   11. CONTACT FORM
+   11. FORMULAIRE DE CONTACT SIMPLE, DIRECT & 100% FONCTIONNEL
    ══════════════════════════════════════════════════════════════════ */
+const CONTACT_EMAIL = 'Cheickodi5@gmail.com';
+
 function handleFormSubmit(e) {
   e.preventDefault();
   const form = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
+  const successBox = document.getElementById('formSuccess');
   const btn = document.getElementById('btnSubmit');
-  if (!btn) return;
+  if (!form || !btn) return;
 
+  // 1. Réinitialiser les messages d'erreurs éventuels
+  ['cfName', 'cfEmail', 'cfMessage'].forEach(id => {
+    const group = document.getElementById(`group-${id}`);
+    const err = document.getElementById(`err-${id}`);
+    if (group) group.classList.remove('has-error');
+    if (err) err.textContent = '';
+  });
+  if (successBox) successBox.style.display = 'none';
+
+  // 2. Récupération des données
+  const name = (document.getElementById('cfName')?.value || '').trim();
+  const email = (document.getElementById('cfEmail')?.value || '').trim();
+  const subject = (document.getElementById('cfSubject')?.value || '').trim();
+  const message = (document.getElementById('cfMessage')?.value || '').trim();
+
+  // 3. Validation simple et claire
+  let hasError = false;
+  if (!name) {
+    showFieldError('cfName', 'Veuillez saisir votre nom.');
+    hasError = true;
+  }
+  if (!email) {
+    showFieldError('cfEmail', 'Veuillez saisir votre e-mail.');
+    hasError = true;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showFieldError('cfEmail', 'Adresse e-mail invalide.');
+    hasError = true;
+  }
+  if (!message) {
+    showFieldError('cfMessage', 'Veuillez rédiger votre message.');
+    hasError = true;
+  }
+
+  if (hasError) return;
+
+  function showFieldError(fieldId, text) {
+    const group = document.getElementById(`group-${fieldId}`);
+    const err = document.getElementById(`err-${fieldId}`);
+    if (group) group.classList.add('has-error');
+    if (err) err.textContent = text;
+  }
+
+  // 4. Préparation de l'e-mail complet
+  const mailSubject = subject ? `[Portfolio] ${subject}` : `[Portfolio] Prise de contact de ${name}`;
+  const mailBody = `Bonjour Cheickna,\n\n${message}\n\n---\nNom : ${name}\nEmail : ${email}`;
+
+  const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+  const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+
+  // 5. Animation et déclenchement immédiat
   btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+  btn.innerHTML = '<i class="fas fa-check"></i> E-mail prêt !';
+
+  // Ouvre le client de messagerie par défaut (Gmail mobile, Outlook, Apple Mail...)
+  window.location.href = mailtoUrl;
+
+  // 6. Affichage du bandeau de confirmation avec boutons 1-clic directs
+  if (successBox) {
+    successBox.innerHTML = `
+      <i class="fas fa-check-circle" style="font-size:1.35rem;color:#4ADE80;margin-top:2px;"></i>
+      <div class="feedback-text">
+        <strong>Votre message est prêt pour ${CONTACT_EMAIL} !</strong>
+        <span>Votre application de messagerie a été ouverte. Si vous utilisez Gmail sur navigateur, vous pouvez aussi l'ouvrir directement ci-dessous :</span>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;">
+          <a href="${gmailWebUrl}" target="_blank" rel="noopener" class="feedback-fallback-btn" style="background:var(--gold);color:#0A0705;border-color:var(--gold);">
+            <i class="fab fa-google"></i> Envoyer via Gmail Web
+          </a>
+          <a href="${mailtoUrl}" class="feedback-fallback-btn">
+            <i class="fas fa-paper-plane"></i> Relancer mon appli Mail
+          </a>
+        </div>
+      </div>
+    `;
+    successBox.style.display = 'flex';
+    successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 
   setTimeout(() => {
-    form.reset();
-    btn.innerHTML = '<span>Envoyer</span><i class="fas fa-paper-plane"></i>';
     btn.disabled = false;
-    if (success) {
-      success.style.display = 'flex';
-      setTimeout(() => { success.style.display = 'none'; }, 6000);
-    }
-  }, 1500);
+    btn.innerHTML = '<span>Envoyer le Message</span><i class="fas fa-paper-plane"></i>';
+  }, 1800);
 }
 
 /* ══════════════════════════════════════════════════════════════════
