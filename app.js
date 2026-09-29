@@ -16,13 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initProjectProofs();
   initProofsLightbox();
+  initProjectsFilter();
+  initDesignExpandBtns();
 });
 
 /* ══════════════════════════════════════════════════════════════════
    1. CUSTOM CURSOR
    ══════════════════════════════════════════════════════════════════ */
 function initCursor() {
-  const dot  = document.getElementById('cursorDot');
+  const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if (!dot || !ring) return;
 
@@ -40,8 +42,8 @@ function initCursor() {
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    dot.style.left  = mouseX + 'px';
-    dot.style.top   = mouseY + 'px';
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
   });
 
   // Smooth ring follow
@@ -49,7 +51,7 @@ function initCursor() {
     ringX += (mouseX - ringX) * 0.15;
     ringY += (mouseY - ringY) * 0.15;
     ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
+    ring.style.top = ringY + 'px';
     requestAnimationFrame(animateRing);
   }
   animateRing();
@@ -102,9 +104,9 @@ function initSidebarNav() {
    3. HAMBURGER MENU (Mobile)
    ══════════════════════════════════════════════════════════════════ */
 function initHamburger() {
-  const btn     = document.getElementById('hamburger');
+  const btn = document.getElementById('hamburger');
   const overlay = document.getElementById('mobileNavOverlay');
-  const sidebar  = document.getElementById('sidebar');
+  const sidebar = document.getElementById('sidebar');
   if (!btn) return;
 
   btn.addEventListener('click', () => {
@@ -126,10 +128,10 @@ function initHamburger() {
 }
 
 function closeMobileNav() {
-  const btn     = document.getElementById('hamburger');
+  const btn = document.getElementById('hamburger');
   const overlay = document.getElementById('mobileNavOverlay');
-  const sidebar  = document.getElementById('sidebar');
-  if (btn)     btn.classList.remove('open');
+  const sidebar = document.getElementById('sidebar');
+  if (btn) btn.classList.remove('open');
   if (overlay) overlay.classList.remove('open');
   if (sidebar) sidebar.classList.remove('mobile-open');
 }
@@ -183,7 +185,7 @@ function initTypedText() {
    ══════════════════════════════════════════════════════════════════ */
 function initCanvas() {
   const canvas = document.getElementById('heroCanvas');
-  const hero   = document.querySelector('.hero-section');
+  const hero = document.querySelector('.hero-section');
   if (!canvas || !hero) return;
   const ctx = canvas.getContext('2d');
   let W, H, particles = [];
@@ -191,7 +193,7 @@ function initCanvas() {
   let isHeroVisible = true;
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
+    W = canvas.width = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
   }
   resize();
@@ -320,7 +322,7 @@ function animateCounter(el) {
    ══════════════════════════════════════════════════════════════════ */
 function initExperienceTabs() {
   const buttons = document.querySelectorAll('.tab-btn');
-  const panels  = document.querySelectorAll('.tab-panel');
+  const panels = document.querySelectorAll('.tab-panel');
   if (!buttons.length) return;
 
   buttons.forEach(btn => {
@@ -403,9 +405,9 @@ function initBackToTop() {
    ══════════════════════════════════════════════════════════════════ */
 function handleFormSubmit(e) {
   e.preventDefault();
-  const form    = document.getElementById('contactForm');
+  const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
-  const btn     = document.getElementById('btnSubmit');
+  const btn = document.getElementById('btnSubmit');
   if (!btn) return;
 
   btn.disabled = true;
@@ -454,7 +456,7 @@ if (heroSection && !window.matchMedia('(pointer: coarse)').matches) {
     }
   });
 
-    heroSection.addEventListener('mouseleave', () => {
+  heroSection.addEventListener('mouseleave', () => {
     const name = document.getElementById('heroName');
     const photoFrame = document.querySelector('.photo-frame');
     if (name) name.style.transform = '';
@@ -464,37 +466,227 @@ if (heroSection && !window.matchMedia('(pointer: coarse)').matches) {
 
 /* ══════════════════════════════════════════════════════════════════
    14. PROJECT PROOFS & DEVICE MOCKUPS (Mobile & Desktop)
+       DÉFILEMENT AUTOMATIQUE FLUIDE (DURÉE : 3 SECONDES)
    ══════════════════════════════════════════════════════════════════ */
 function initProjectProofs() {
   const thumbGroups = document.querySelectorAll('.proof-thumbs');
+  const SLIDE_DURATION = 3000; // 3 secondes
+
   thumbGroups.forEach(group => {
     const galleryId = group.dataset.gallery;
-    const thumbs = group.querySelectorAll('.proof-thumb');
+    const thumbs = Array.from(group.querySelectorAll('.proof-thumb'));
     const displayImg = document.querySelector(`[data-gallery-screen="${galleryId}"] img`);
+    const projectCard = group.closest('.feat-project');
+    const deviceMockup = document.querySelector(`[data-gallery-target="${galleryId}"]`);
 
-    thumbs.forEach((thumb, idx) => {
-      thumb.addEventListener('click', () => {
-        // Active status
-        thumbs.forEach(t => t.classList.remove('active'));
-        thumb.classList.add('active');
+    if (!thumbs.length || !displayImg) return;
 
-        // Change image in device mockup (phone or laptop) with smooth transition
-        const newSrc = thumb.dataset.img;
-        if (displayImg && newSrc) {
-          displayImg.style.opacity = '0';
-          setTimeout(() => {
-            displayImg.src = newSrc;
-            displayImg.style.opacity = '1';
-          }, 180);
-        }
+    let currentIndex = 0;
+    let autoTimer = null;
+    let isPaused = false;
 
-        // Update zoom overlay trigger index
-        const screenOverlay = document.querySelector(`[data-gallery-screen="${galleryId}"] .phone-screen-overlay, [data-gallery-screen="${galleryId}"] .laptop-screen-overlay`);
-        if (screenOverlay) {
-          screenOverlay.dataset.start = idx;
+    function goToSlide(idx, restart = true) {
+      if (idx < 0) idx = thumbs.length - 1;
+      if (idx >= thumbs.length) idx = 0;
+      currentIndex = idx;
+
+      // 1. Mise à jour de l'état actif et de l'indicateur de progression
+      thumbs.forEach((t, i) => {
+        const isActive = (i === currentIndex);
+        t.classList.toggle('active', isActive);
+        t.classList.remove('is-progressing');
+        if (isActive && !isPaused) {
+          void t.offsetWidth; // Force reflow pour relancer l'animation CSS 3s
+          t.classList.add('is-progressing');
         }
       });
+
+      // 2. Transition douce de l'image du mockup (Smartphone ou Laptop)
+      const currentThumb = thumbs[currentIndex];
+      const newSrc = currentThumb ? currentThumb.dataset.img : null;
+      if (newSrc) {
+        displayImg.style.opacity = '0';
+        displayImg.style.transform = 'scale(0.97)';
+        setTimeout(() => {
+          displayImg.src = newSrc;
+          displayImg.style.opacity = '1';
+          displayImg.style.transform = 'scale(1)';
+        }, 160);
+      }
+
+      // 3. Mise à jour de l'index de départ pour la lightbox plein écran
+      const screenOverlay = document.querySelector(
+        `[data-gallery-screen="${galleryId}"] .phone-screen-overlay, [data-gallery-screen="${galleryId}"] .laptop-screen-overlay, [data-gallery-screen="${galleryId}"] .rollup-banner-overlay, [data-gallery-screen="${galleryId}"] .stage-banner-overlay, [data-gallery-screen="${galleryId}"] .poster-screen-overlay, [data-gallery-screen="${galleryId}"] [data-gallery]`
+      );
+      if (screenOverlay) {
+        screenOverlay.dataset.start = currentIndex;
+      }
+
+      // 4. Relance du compte à rebours de 3 secondes si demandé
+      if (restart) {
+        resetTimer();
+      }
+    }
+
+    function resetTimer() {
+      if (autoTimer) {
+        clearTimeout(autoTimer);
+        autoTimer = null;
+      }
+      if (isPaused) return;
+
+      const activeThumb = thumbs[currentIndex];
+      if (activeThumb) {
+        activeThumb.classList.remove('is-progressing');
+        void activeThumb.offsetWidth;
+        activeThumb.classList.add('is-progressing');
+      }
+
+      autoTimer = setTimeout(() => {
+        goToSlide(currentIndex + 1, true);
+      }, SLIDE_DURATION);
+    }
+
+    function pause() {
+      isPaused = true;
+      if (autoTimer) {
+        clearTimeout(autoTimer);
+        autoTimer = null;
+      }
+      const activeThumb = thumbs[currentIndex];
+      if (activeThumb) activeThumb.classList.remove('is-progressing');
+    }
+
+    function resume() {
+      if (!isPaused) return;
+      isPaused = false;
+      resetTimer();
+    }
+
+    // Gestion du clic utilisateur sur les boutons miniatures
+    thumbs.forEach((thumb, idx) => {
+      thumb.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(idx, true);
+      });
     });
+
+    // Pause au survol (sur la carte du projet ou sur l'écran du mockup)
+    const hoverElements = [projectCard, deviceMockup, group].filter(Boolean);
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', pause);
+      el.addEventListener('mouseleave', resume);
+    });
+
+    // Démarrage initial
+    goToSlide(0, true);
+
+    // Optimisation : suspendre le défilement si le projet est hors champ
+    if ('IntersectionObserver' in window && projectCard) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            resume();
+          } else {
+            pause();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(projectCard);
+    }
+  });
+
+  // Défilement automatique pour les autres cartes (Dashboards RH, Stock, etc.)
+  initOtherCardsSlideshow();
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   14b. AUTO-SLIDESHOW POUR LES CARTES DASHBOARDS & LOGICIELS (3S)
+   ══════════════════════════════════════════════════════════════════ */
+function initOtherCardsSlideshow() {
+  const cards = document.querySelectorAll('.other-projects-grid .other-card');
+  const SLIDE_DURATION = 3000;
+
+  cards.forEach(card => {
+    // Identifier la clé de galerie associée
+    const proofBtn = card.querySelector('[data-gallery]');
+    const galleryKey = proofBtn ? proofBtn.dataset.gallery : null;
+    if (!galleryKey || !PROJECT_CONFIG[galleryKey]) return;
+
+    const items = PROJECT_CONFIG[galleryKey].items;
+    if (!items || items.length <= 1) return;
+
+    const thumbContainer = card.querySelector('.other-card-thumb, .vinyl-jacket, .brand-board-preview');
+    const thumbImg = thumbContainer ? thumbContainer.querySelector('img') : null;
+    if (!thumbImg) return;
+
+    // Ajout d'un badge élégant indiquant le défilement (ex: 1/7)
+    let badge = card.querySelector('.other-card-slide-badge');
+    if (!badge && !card.classList.contains('vinyl-card')) {
+      badge = document.createElement('span');
+      badge.className = 'other-card-slide-badge';
+      badge.innerHTML = `<i class="fas fa-play"></i> 1/${items.length}`;
+      thumbContainer.appendChild(badge);
+    }
+
+    let currentIndex = parseInt(proofBtn.dataset.start, 10) || 0;
+    let timer = null;
+    let isPaused = false;
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % items.length;
+      const nextItem = items[currentIndex];
+
+      thumbImg.style.opacity = '0';
+      thumbImg.style.transform = 'scale(0.98)';
+
+      setTimeout(() => {
+        thumbImg.src = nextItem.src;
+        thumbImg.style.opacity = '0.95';
+        thumbImg.style.transform = 'scale(1)';
+        if (badge) badge.innerHTML = `<i class="fas fa-play"></i> ${currentIndex + 1}/${items.length}`;
+      }, 160);
+    }
+
+    function start() {
+      stop();
+      if (isPaused) return;
+      timer = setInterval(nextSlide, SLIDE_DURATION);
+    }
+
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    card.addEventListener('mouseenter', () => {
+      isPaused = true;
+      stop();
+    });
+
+    card.addEventListener('mouseleave', () => {
+      isPaused = false;
+      start();
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            isPaused = false;
+            start();
+          } else {
+            isPaused = true;
+            stop();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(card);
+    } else {
+      start();
+    }
   });
 }
 
@@ -503,110 +695,222 @@ function initProjectProofs() {
    ══════════════════════════════════════════════════════════════════ */
 // Dictionnaire complet des galeries avec type d'appareil (mobile vs desktop)
 const PROJECT_CONFIG = {
+  /* ── Applications Mobile ── */
   mywa: {
     device: 'mobile',
     url: 'https://mywa.market.app',
     items: [
-      { src: 'images/Mywa/home 1.jpg', title: 'Mywa — 01. Accueil marketplace & Boutiques en vedette' },
-      { src: 'images/Mywa/boutique.jpg', title: 'Mywa — 02. Vitrine boutique & Catégories' },
-      { src: 'images/Mywa/boutik.jpg', title: 'Mywa — 03. Fiche produit détaillée & Panier' },
-      { src: 'images/Mywa/Login.jpg', title: 'Mywa — 04. Authentification & Sécurité Firebase' }
+      { src: 'images/Application/Mywa/home 1.jpg', title: 'Mywa — 01. Accueil marketplace & Boutiques en vedette' },
+      { src: 'images/Application/Mywa/boutique.jpg', title: 'Mywa — 02. Vitrine boutique & Catégories' },
+      { src: 'images/Application/Mywa/boutik.jpg', title: 'Mywa — 03. Fiche produit détaillée & Panier' },
+      { src: 'images/Application/Mywa/Login.jpg', title: 'Mywa — 04. Authentification & Sécurité Firebase' },
+      { src: 'images/Application/Mywa/menu.jpg', title: 'Mywa — 05. Navigation & Menu principal' },
+      { src: 'images/Application/Mywa/Screenshot_20260916_165135.jpg', title: 'Mywa — 06. Notifications & Commandes live' },
+      { src: 'images/Application/Mywa/Screenshot_20260916_165143.jpg', title: 'Mywa — 07. Suivi commande en cours' },
+      { src: 'images/Application/Mywa/Screenshot_20260916_165148.jpg', title: 'Mywa — 08. Détail produit & Avis' }
     ]
   },
   cid: {
     device: 'mobile',
     url: 'https://cid-banking.secure.ml',
     items: [
-      { src: 'images/Client Bank/home 1.png', title: 'CID Banking — 01. Tableau de bord compte & Solde client' },
-      { src: 'images/Client Bank/1 (1).PNG', title: 'CID Banking — 02. Liste & Historique des opérations bancaires' },
-      { src: 'images/Client Bank/1 (2).PNG', title: 'CID Banking — 03. Validation et reçu de transfert bancaire' },
-      { src: 'images/Client Bank/detail.png', title: 'CID Banking — 04. Détails d\'opération & Relevé de compte sécurisé' }
-    ]
-  },
-  'mywa-dash': {
-    device: 'desktop',
-    url: 'https://admin.mywa.market/dashboard',
-    items: [
-      { src: 'images/Mywa/Dashboard/Dashboard (1).png', title: 'Mywa Dashboard — 01. Vue d\'ensemble des ventes & Métriques clés' },
-      { src: 'images/Mywa/Dashboard/Dashboard (2).png', title: 'Mywa Dashboard — 02. Graphiques analytiques de performance et chiffre d\'affaires' },
-      { src: 'images/Mywa/Dashboard/Dashboard (3).png', title: 'Mywa Dashboard — 03. Administration des boutiques partenaires & Catalogues' },
-      { src: 'images/Mywa/Dashboard/Dashboard (4).png', title: 'Mywa Dashboard — 04. Gestion des commandes, livraisons et flux clients' }
-    ]
-  },
-  malishi: {
-    device: 'mobile',
-    url: 'https://malishi.com',
-    items: [
-      { src: 'images/Mywa/boutique.jpg', title: 'MaliShi — 01. Vitrine mobile des produits Karité' },
-      { src: 'images/Mywa/boutik.jpg', title: 'MaliShi — 02. Grille catalogue & Filtres par gamme' },
-      { src: 'images/Mywa/menu.jpg', title: 'MaliShi — 03. Navigation catalogue & Catégories' },
-      { src: 'images/Mywa/home 1.jpg', title: 'MaliShi — 04. Accueil promotions & Valorisation locale' }
-    ]
-  },
-  quantix: {
-    device: 'desktop',
-    url: 'https://quantix.thl.ml/admin/dashboard/stocks',
-    items: [
-      { src: 'images/Mywa/Screenshot_20260916_165238.jpg', title: 'Quantix ERP — 01. Tableau de bord des stocks & Vue d\'ensemble' },
-      { src: 'images/Mywa/Screenshot_20260916_165249.jpg', title: 'Quantix ERP — 02. Alertes automatiques de rupture & Commandes' },
-      { src: 'images/Mywa/Dashboard/Dashboard (5).png', title: 'Quantix ERP — 03. Fiche article, codes-barres & Traçabilité' },
-      { src: 'images/Mywa/Dashboard/Dashboard (6).png', title: 'Quantix ERP — 04. Statistiques mensuelles, valorisation & Inventaire' }
-    ]
-  },
-  paie: {
-    device: 'desktop',
-    url: 'https://rh-paie.enterprise.ml/admin/payroll',
-    items: [
-      { src: 'images/Mywa/Dashboard/Dashboard (7).png', title: 'Gestion de Paie — 01. Organigramme dynamique d\'entreprise' },
-      { src: 'images/Mywa/Dashboard/Dashboard (8).png', title: 'Gestion de Paie — 02. Moteur de calcul des salaires & Cotisations' },
-      { src: 'images/Mywa/Dashboard/Dashboard (9).png', title: 'Gestion de Paie — 03. Planning des congés payés & Absences' },
-      { src: 'images/Mywa/Dashboard/Dashboard (10).png', title: 'Gestion de Paie — 04. Bulletins de paie & Export comptable' }
-    ]
-  },
-  sport: {
-    device: 'desktop',
-    url: 'https://sport.federation.ml/athletes/monitor',
-    items: [
-      { src: 'images/Mywa/Dashboard/Dashboard (11).png', title: 'Min Digital Sport — 01. Suivi des performances athlètes' },
-      { src: 'images/Mywa/Dashboard/Dashboard (1).png', title: 'Min Digital Sport — 02. Calendrier des compétitions sportives' },
-      { src: 'images/Mywa/Dashboard/Dashboard (2).png', title: 'Min Digital Sport — 03. Fiche joueur détaillée & Statistiques' },
-      { src: 'images/Mywa/Dashboard/Dashboard (3).png', title: 'Min Digital Sport — 04. Médias & Rapports de match' }
+      { src: 'images/Application/Client Bank/home 1.png', title: 'CID Banking — 01. Tableau de bord compte & Solde client' },
+      { src: 'images/Application/Client Bank/1 (1).PNG', title: 'CID Banking — 02. Liste & Historique des opérations bancaires' },
+      { src: 'images/Application/Client Bank/1 (2).PNG', title: 'CID Banking — 03. Validation et reçu de transfert bancaire' },
+      { src: 'images/Application/Client Bank/1 (3).PNG', title: 'CID Banking — 04. Relevé mensuel filtrable' },
+      { src: 'images/Application/Client Bank/1 (4).PNG', title: 'CID Banking — 05. Virement externe & Confirmation' },
+      { src: 'images/Application/Client Bank/detail.png', title: 'CID Banking — 06. Détails d\'opération & Relevé sécurisé' },
+      { src: 'images/Application/Client Bank/home.jpg.jpeg', title: 'CID Banking — 07. Accueil compact & Accès rapide' },
+      { src: 'images/Application/Client Bank/Login.jpg.jpeg', title: 'CID Banking — 08. Login sécurisé JWT & RSA' }
     ]
   },
   hewo: {
     device: 'mobile',
     url: 'https://hewo-vtc.app',
     items: [
-      { src: 'images/Mywa/Screenshot_20260916_165135.jpg', title: 'Hewo VTC — 01. Réservation de course passager' },
-      { src: 'images/Mywa/Screenshot_20260916_165143.jpg', title: 'Hewo VTC — 02. Suivi GPS temps réel du chauffeur' },
-      { src: 'images/Mywa/Screenshot_20260916_165148.jpg', title: 'Hewo VTC — 03. Historique des trajets & Facturation' },
-      { src: 'images/Mywa/home 1.jpg', title: 'Hewo VTC — 04. Dashboard dispatching centralisé' }
+      { src: 'images/Application/Hewo/Mobile/home.jpg', title: 'Hewo VTC — 01. Accueil & Carte interactive passager' },
+      { src: 'images/Application/Hewo/Mobile/login.jpg', title: 'Hewo VTC — 02. Connexion & Authentification' },
+      { src: 'images/Application/Hewo/Mobile/parcours.jpg', title: 'Hewo VTC — 03. Sélection du parcours & Destination' },
+      { src: 'images/Application/Hewo/Mobile/trajet.jpg', title: 'Hewo VTC — 04. Trajet en cours & Tracking GPS live' },
+      { src: 'images/Application/Hewo/Mobile/menu.jpg', title: 'Hewo VTC — 05. Menu principal & Navigation' },
+      { src: 'images/Application/Hewo/Mobile/profil.jpg', title: 'Hewo VTC — 06. Profil utilisateur & Paramètres' },
+      { src: 'images/Application/Hewo/Mobile/course.jpg', title: 'Hewo VTC — 07. Détail d\'une course active' },
+      { src: 'images/Application/Hewo/Mobile/list.jpg', title: 'Hewo VTC — 08. Liste des courses disponibles' },
+      { src: 'images/Application/Hewo/Mobile/list course.jpg', title: 'Hewo VTC — 09. Liste de courses filtrée & Historique' },
+      { src: 'images/Application/Hewo/Mobile/notif.jpg', title: 'Hewo VTC — 10. Notifications & Alertes en temps réel' },
+      { src: 'images/Application/Hewo/Mobile/requette.jpg', title: 'Hewo VTC — 11. Requête de course & Validation' },
+      { src: 'images/Application/Hewo/Mobile/welcome (1).jpg', title: 'Hewo VTC — 12. Onboarding — Bienvenue (1/5)' },
+      { src: 'images/Application/Hewo/Mobile/welcome (2).jpg', title: 'Hewo VTC — 13. Onboarding — Présentation app (2/5)' },
+      { src: 'images/Application/Hewo/Mobile/welcome (3).jpg', title: 'Hewo VTC — 14. Onboarding — Fonctionnalités (3/5)' },
+      { src: 'images/Application/Hewo/Mobile/welcome (4).jpg', title: 'Hewo VTC — 15. Onboarding — Sécurité & Confiance (4/5)' },
+      { src: 'images/Application/Hewo/Mobile/welcome (5).jpg', title: 'Hewo VTC — 16. Onboarding — Démarrer maintenant (5/5)' }
+    ]
+  },
+  malishi: {
+    device: 'mobile',
+    url: 'https://malishi.com',
+    items: [
+      { src: 'images/Application/Mywa/boutique.jpg', title: 'MaliShi — 01. Vitrine mobile des produits Karité' },
+      { src: 'images/Application/Mywa/boutik.jpg', title: 'MaliShi — 02. Grille catalogue & Filtres par gamme' },
+      { src: 'images/Application/Mywa/menu.jpg', title: 'MaliShi — 03. Navigation catalogue & Catégories' },
+      { src: 'images/Application/Mywa/home 1.jpg', title: 'MaliShi — 04. Accueil promotions & Valorisation locale' }
+    ]
+  },
+  /* ── Dashboards Web ── */
+  'mywa-dash': {
+    device: 'desktop',
+    url: 'https://admin.mywa.market/dashboard',
+    items: [
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (1).png', title: 'Mywa Dashboard — 01. Vue d\'ensemble des ventes & Métriques clés' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (2).png', title: 'Mywa Dashboard — 02. Graphiques analytiques de performance' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (3).png', title: 'Mywa Dashboard — 03. Administration boutiques partenaires' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (4).png', title: 'Mywa Dashboard — 04. Gestion commandes, livraisons & stocks' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (5).png', title: 'Mywa Dashboard — 05. Rapports financiers & Export' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (6).png', title: 'Mywa Dashboard — 06. Gestion utilisateurs & Rôles' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (7).png', title: 'Mywa Dashboard — 07. Tableau de bord multi-boutiques' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (8).png', title: 'Mywa Dashboard — 08. Analytique avancée & Tendances' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (9).png', title: 'Mywa Dashboard — 09. Configuration & Paramètres admin' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (10).png', title: 'Mywa Dashboard — 10. Statistiques temps réel' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (11).png', title: 'Mywa Dashboard — 11. Gestion des livreurs & Zones' },
+      { src: 'images/Application/Mywa/Dashboard/Login.png', title: 'Mywa Dashboard — 12. Login administrateur sécurisé' }
+    ]
+  },
+  paie: {
+    device: 'desktop',
+    url: 'https://rh-paie.enterprise.ml/admin/payroll',
+    items: [
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083616.png', title: 'Gestion de Paie — 01. Vue globale RH & Employés' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083646.png', title: 'Gestion de Paie — 02. Organigramme dynamique d\'entreprise' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083808.png', title: 'Gestion de Paie — 03. Moteur de calcul des salaires' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083856.png', title: 'Gestion de Paie — 04. Planning des congés payés & Absences' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 084557.png', title: 'Gestion de Paie — 05. Bulletins de paie & Export comptable' },
+      { src: 'images/Application/Gestion de paie/PC/home.png', title: 'Gestion de Paie — 06. Dashboard RH principal' },
+      { src: 'images/Application/Gestion de paie/PC/login.png', title: 'Gestion de Paie — 07. Authentification & Sécurité' }
+    ]
+  },
+  quantix: {
+    device: 'desktop',
+    url: 'https://quantix.thl.ml/admin/dashboard/stocks',
+    items: [
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (5).png', title: 'Quantix ERP — 01. Vue d\'ensemble des stocks' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (6).png', title: 'Quantix ERP — 02. Alertes de rupture & Commandes' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (7).png', title: 'Quantix ERP — 03. Fiche article & Traçabilité' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (8).png', title: 'Quantix ERP — 04. Inventaire mensuel & Valorisation' }
+    ]
+  },
+  sport: {
+    device: 'mobile',
+    url: 'https://sport.federation.ml',
+    items: [
+      { src: 'images/Application/logo/Mindigitalsport.png', title: 'Min Digital Sport — Plateforme numérique sportive' }
     ]
   },
   appgest: {
-    device: 'desktop',
-    url: 'https://appgest.logistics.ml/dispatching',
+    device: 'mobile',
+    url: 'https://appgest.logistics.ml',
     items: [
-      { src: 'images/Mywa/Dashboard/Dashboard (4).png', title: 'AppGest — 01. Gestion logistique des tournées' },
-      { src: 'images/Mywa/Dashboard/Dashboard (5).png', title: 'AppGest — 02. Validation de livraison mobile' },
-      { src: 'images/Mywa/Dashboard/Dashboard (6).png', title: 'AppGest — 03. Suivi des commandes & Bons de livraison' },
-      { src: 'images/Mywa/Dashboard/Dashboard (7).png', title: 'AppGest — 04. Dashboard dispatching & Flotte' }
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (4).png', title: 'AppGest — 01. Gestion logistique des tournées' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (5).png', title: 'AppGest — 02. Dispatching & Flotte chauffeurs' }
+    ]
+  },
+  /* ── Design Graphique ── */
+  zabban: {
+    device: 'desktop',
+    url: 'https://zabban-holding.com/catalogue',
+    items: [
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (1).PNG', title: 'Zabban — 01. Visuel produit premium collection' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (2).PNG', title: 'Zabban — 02. Présentation catalogue page 2' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (3).PNG', title: 'Zabban — 03. Déclinaison colorimétrique' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (4).PNG', title: 'Zabban — 04. Mise en page éditoriale premium' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (1).JPEG', title: 'Zabban — 05. Visuel lifestyle produit' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (1).JPG', title: 'Zabban — 06. Packaging & Étiquette officielle' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (2).JPG', title: 'Zabban — 07. Vue d\'ensemble gamme produits' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (3).JPG', title: 'Zabban — 08. Mise en scène & Présentation soignée' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (4).JPG', title: 'Zabban — 09. Fiche produit détaillée' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (5).JPG', title: 'Zabban — 10. Variation couleur & Finition' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (6).JPG', title: 'Zabban — 11. Packshot fond neutre' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (7).JPG', title: 'Zabban — 12. Composition & Mise en scène' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (9).JPG', title: 'Zabban — 13. Colorimétrie & Harmonie visuelle' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (10).JPG', title: 'Zabban — 14. Catalogue pleine page' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (11).JPG', title: 'Zabban — 15. Focus produit hero shot' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (12).JPG', title: 'Zabban — 16. Fiche technique & Spécifications' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (13).JPG', title: 'Zabban — 17. Collection complète & Récapitulatif' },
+      { src: 'images/Programme vusiel/Zabban/Produit/1 (8).JPG', title: 'Zabban — 18. Dernière page catalogue' }
+    ]
+  },
+  kakemono: {
+    device: 'mobile',
+    url: 'https://kaizenmali.ml/portfolio/kakemonos',
+    items: [
+      { src: 'images/Programme vusiel/Affiche & etiquette/KAKEMONO.jpg', title: 'Kaizen Studios — 01. Kakémono officiel prestige (85×200cm)' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/kake 1.jpg', title: 'Kaizen Studios — 02. Totem roll-up salon & conférence' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/Kakemono Reine et roi .jpg', title: 'Kaizen Studios — 03. Kakémono Royal Reine & Roi' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_01_23_04_38_IMG_0263.JPG', title: 'Kaizen Studios — 04. Installation réelle en salle de conférence' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_01_23_04_38_IMG_0266.JPG', title: 'Kaizen Studios — 05. Kakémono déployé à l\'accueil officiel' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_01_23_04_38_IMG_0268.JPG', title: 'Kaizen Studios — 06. Rendu matière & Précision d\'impression' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_01_23_04_38_IMG_0276.JPG', title: 'Kaizen Studios — 07. Ambiance événementielle & Signalétique' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_01_23_04_38_IMG_0280.JPG', title: 'Kaizen Studios — 08. Déploiement scénique & Vue d\'ensemble' }
+    ]
+  },
+  bache: {
+    device: 'desktop',
+    url: 'https://kaizenmali.ml/portfolio/baches',
+    items: [
+      { src: 'images/Programme vusiel/Affiche & etiquette/Bâche ROSE.jpg', title: 'Kaizen Studios — 01. Bâche scénique panoramique géante (5000×2700px — ROSE Event)' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_01_30_13_35_IMG_0207.JPEG', title: 'Kaizen Studios — 02. Bâche montée sur structure de scène live' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_02_01_15_59_IMG_0831.JPG', title: 'Kaizen Studios — 03. Structure métallique tubulaire & Pose de la bâche' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_02_01_15_59_IMG_0832.JPG', title: 'Kaizen Studios — 04. Détail de fixation & Œillets de tension' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_02_01_15_59_IMG_0833.JPG', title: 'Kaizen Studios — 05. Vue d\'ensemble scène illuminée & Public' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_02_02_10_00_IMG_0825.JPG', title: 'Kaizen Studios — 06. Rendu réel impression grand format HD' }
+    ]
+  },
+  affiche: {
+    device: 'desktop',
+    url: 'https://kaizenmali.ml/portfolio/affiches',
+    items: [
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_02_11_23_43_IMG_1295.PNG', title: 'Kaizen Studios — 01. Mockup Affiche Événementielle HD (Édition Festival)' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/2026_02_11_23_51_IMG_1308.PNG', title: 'Kaizen Studios — 02. Affiche Événementielle HD (Éclairage Nocturne)' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/cover officiel 1 by Kaizen  made it-Récupéré 11.png', title: 'Kaizen Studios — 03. Cover officielle Kaizen Made It (Album Art)' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/cover 2.jpg', title: 'Kaizen Studios — 04. Pochette musicale & Direction artistique' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/cover tracklist.png', title: 'Kaizen Studios — 05. Tracklist & Composition typographique' },
+      { src: 'images/Programme vusiel/Affiche & etiquette/Soumbala Assaisonné copie.jpg', title: 'Kaizen Studios — 06. Étiquette & Packaging agroalimentaire traditionnel' }
+    ]
+  },
+  logos: {
+    device: 'mobile',
+    url: 'https://kaizenmali.ml/portfolio/logos',
+    items: [
+      { src: 'images/Programme vusiel/Logo/GAME XP LOGO 1-01.png', title: 'Logo Game XP — Identité gaming & e-sport' },
+      { src: 'images/Programme vusiel/Logo/kaizen logo officiel-01.png', title: 'Logo Kaizen — Identité officielle de marque' },
+      { src: 'images/Programme vusiel/Logo/Tunka invest-01.png', title: 'Logo Tunka Invest — Finance & Investissement' },
+      { src: 'images/Programme vusiel/Logo/2.png', title: 'Identité visuelle — Concept typographique' },
+      { src: 'images/Programme vusiel/Logo/2026_01_09_22_18_IMG_0526.JPG', title: 'Photo impression logo officiel' },
+      { src: 'images/Programme vusiel/Logo/2026_01_09_22_18_IMG_0597.PNG', title: 'Logo version haute résolution print' },
+      { src: 'images/Programme vusiel/Logo/2026_02_11_18_00_IMG_1263.PNG', title: 'Logo en situation réelle & Application' }
+    ]
+  },
+  barra: {
+    device: 'mobile',
+    url: 'https://kaizenmali.ml/portfolio/barra',
+    items: [
+      { src: 'images/Programme vusiel/Barra challenge/logoBG.PNG', title: 'Barra Challenge — Logo fond transparent (version officielle)' },
+      { src: 'images/Programme vusiel/Barra challenge/logo (1).JPG', title: 'Barra Challenge — Logo imprimé & Rendu final' }
     ]
   }
 };
 
 function initProofsLightbox() {
-  const modal        = document.getElementById('proofsLightbox');
-  const backdrop     = document.getElementById('lightboxBackdrop');
-  const closeBtn     = document.getElementById('lightboxCloseBtn');
-  const prevBtn      = document.getElementById('lightboxPrev');
-  const nextBtn      = document.getElementById('lightboxNext');
-  const phoneImg     = document.getElementById('lightboxMainImg');
-  const desktopImg   = document.getElementById('lightboxDesktopImg');
-  const desktopUrl   = document.getElementById('lightboxLaptopUrl');
-  const captionEl    = document.getElementById('lightboxCaption');
-  const counterEl    = document.getElementById('lightboxCounter');
-  const thumbsEl     = document.getElementById('lightboxThumbs');
+  const modal = document.getElementById('proofsLightbox');
+  const backdrop = document.getElementById('lightboxBackdrop');
+  const closeBtn = document.getElementById('lightboxCloseBtn');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+  const phoneImg = document.getElementById('lightboxMainImg');
+  const desktopImg = document.getElementById('lightboxDesktopImg');
+  const desktopUrl = document.getElementById('lightboxLaptopUrl');
+  const captionEl = document.getElementById('lightboxCaption');
+  const counterEl = document.getElementById('lightboxCounter');
+  const thumbsEl = document.getElementById('lightboxThumbs');
   const downloadLink = document.getElementById('lightboxDownloadBtn');
 
   if (!modal) return;
@@ -736,3 +1040,57 @@ function initProofsLightbox() {
 }
 
 
+/* ══════════════════════════════════════════════════════════════════
+   16. PROJECTS FILTER — Catégories (Mobile / Dashboard / Design)
+   ══════════════════════════════════════════════════════════════════ */
+function initProjectsFilter() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // Active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (filter === 'all') {
+        // Show everything
+        document.querySelectorAll('[data-category], .projects-category-divider').forEach(el => {
+          el.style.display = '';
+          el.style.opacity = '1';
+        });
+        return;
+      }
+
+      // Show/hide featured project articles
+      document.querySelectorAll('[data-category]').forEach(el => {
+        const cat = el.dataset.category;
+        const show = (cat === filter);
+        el.style.display = show ? '' : 'none';
+        if (show) {
+          el.style.opacity = '0';
+          setTimeout(() => { el.style.opacity = '1'; el.style.transition = 'opacity 0.4s ease'; }, 50);
+        }
+      });
+
+      // Show/hide category dividers
+      document.querySelectorAll('.projects-category-divider').forEach(divider => {
+        const cat = divider.dataset.category;
+        divider.style.display = (cat === filter) ? '' : 'none';
+      });
+
+      // Notifier les observers d'intersection
+      window.dispatchEvent(new Event('scroll'));
+    });
+  });
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   17. DESIGN EXPAND BUTTONS (Délégué à initProofsLightbox)
+   ══════════════════════════════════════════════════════════════════ */
+function initDesignExpandBtns() {
+  // Pris en charge de manière universelle par l'écouteur d'événements [data-gallery]
+  // dans initProofsLightbox(), pour un comportement uniforme sur tous les projets.
+}

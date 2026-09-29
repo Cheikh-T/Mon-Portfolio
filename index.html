@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -190,7 +190,7 @@
 
           <div class="hero-stats">
             <div class="stat">
-              <span class="stat-num" data-target="1100 ">0</span>
+              <span class="stat-num" data-target="1193 ">0</span>
               <span class="stat-lbl">Contributions GitHub</span>
             </div>
             <div class="stat-sep"></div>
@@ -251,7 +251,7 @@
                 interfaces <strong>Angular</strong> élégantes, jusqu'aux apps <strong>Flutter</strong> performantes.
               </p>
               <p>
-                Entrepreneur et formateur, je dirige également <strong>Pixel Addict</strong>
+                Entrepreneur et formateur, je dirige également <strong>Kaizen Studios</strong>
                 (studio de design graphique) et <strong>Horizon X</strong> (centre de formation),
                 contribuant ainsi à l'essor numérique du Mali.
               </p>
@@ -421,16 +421,39 @@
             <div class="section-rule"></div>
           </header>
 
+          <!-- ── Filtres de catégorie ── -->
+          <div class="projects-filter-bar" id="projects-filter-bar">
+            <button class="filter-btn active" data-filter="all" id="filter-all">
+              <i class="fas fa-th-large"></i> Tous <span class="filter-count">15</span>
+            </button>
+            <button class="filter-btn" data-filter="mobile" id="filter-mobile">
+              <i class="fas fa-mobile-alt"></i> Applications Mobile <span class="filter-count">4</span>
+            </button>
+            <button class="filter-btn" data-filter="dashboard" id="filter-dashboard">
+              <i class="fas fa-desktop"></i> Dashboards Web <span class="filter-count">4</span>
+            </button>
+            <button class="filter-btn" data-filter="design" id="filter-design">
+              <i class="fas fa-palette"></i> Design Graphique <span class="filter-count">7</span>
+            </button>
+          </div>
+
+          <!-- ══ BLOC : Applications Mobile & Full Stack ══ -->
+          <div class="projects-category-divider" data-category="mobile">
+            <div class="category-divider-label">
+              <i class="fas fa-mobile-alt"></i> Applications Mobile · Full Stack
+            </div>
+          </div>
+
           <!-- Featured projects -->
           <div class="featured-projects">
 
             <!-- MYWA MOBILE -->
-            <article class="feat-project" id="fp-mywa">
+            <article class="feat-project" id="fp-mywa" data-category="mobile">
               <div class="feat-project-content">
                 <!-- En-tête avec Logo du Projet -->
                 <div class="project-brand-badge">
                   <div class="project-logo-box">
-                    <img src="images/logo/MYWA.png" alt="Logo Mywa" class="project-logo-img"
+                    <img src="images/Application/logo/MYWA.png" alt="Logo Mywa" class="project-logo-img"
                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                     <div class="project-logo-fallback"><i class="fas fa-wallet"></i></div>
                   </div>
@@ -454,29 +477,29 @@
                   <li><i class="fas fa-network-wired"></i> REST API</li>
                 </ul>
 
-                <!-- Preuves visuelles interactives (1 à 4 images de références) -->
+                <!-- Preuves visuelles interactives -->
                 <div class="project-proofs-bar">
                   <span class="proofs-label mono-text"><i class="fas fa-images"></i> 4 Captures de référence :</span>
                   <div class="proof-thumbs" data-gallery="mywa">
-                    <button class="proof-thumb active" data-img="images/Mywa/home 1.jpg"
+                    <button class="proof-thumb active" data-img="images/Application/Mywa/home 1.jpg"
                       data-caption="Mywa — Accueil &amp; Boutiques en vedette" title="Capture 1 : Accueil">
-                      <img src="images/Mywa/home 1.jpg" alt="Accueil" />
+                      <img src="images/Application/Mywa/home 1.jpg" alt="Accueil" />
                       <span>01. Accueil</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/boutique.jpg"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/boutique.jpg"
                       data-caption="Mywa — Catalogue boutique &amp; Produits" title="Capture 2 : Boutique">
-                      <img src="images/Mywa/boutique.jpg" alt="Boutique" />
+                      <img src="images/Application/Mywa/boutique.jpg" alt="Boutique" />
                       <span>02. Boutique</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/boutik.jpg"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/boutik.jpg"
                       data-caption="Mywa — Fiche produit détaillée &amp; Panier" title="Capture 3 : Panier">
-                      <img src="images/Mywa/boutik.jpg" alt="Panier" />
+                      <img src="images/Application/Mywa/boutik.jpg" alt="Panier" />
                       <span>03. Panier</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/Login.jpg"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/Login.jpg"
                       data-caption="Mywa — Écran de Connexion &amp; Authentification sécurisée"
                       title="Capture 4 : Login">
-                      <img src="images/Mywa/Login.jpg" alt="Login" />
+                      <img src="images/Application/Mywa/Login.jpg" alt="Login" />
                       <span>04. Connexion</span>
                     </button>
                   </div>
@@ -499,7 +522,7 @@
                   <div class="phone-speaker"></div>
                   <div class="phone-camera"></div>
                   <div class="phone-screen" data-gallery-screen="mywa">
-                    <img src="images/Mywa/home 1.jpg" alt="Mywa Interface Mobile" id="phone-img-mywa"
+                    <img src="images/Application/Mywa/home 1.jpg" alt="Mywa Interface Mobile" id="phone-img-mywa"
                       class="phone-display-img" />
                     <div class="phone-screen-overlay" data-gallery="mywa" data-start="0">
                       <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</span>
@@ -511,12 +534,12 @@
             </article>
 
             <!-- CID BANKING (Client Bank Mobile) -->
-            <article class="feat-project feat-reverse" id="fp-cid">
+            <article class="feat-project feat-reverse" id="fp-cid" data-category="mobile">
               <div class="feat-project-content">
                 <!-- En-tête avec Logo du Projet -->
                 <div class="project-brand-badge">
                   <div class="project-logo-box fintech">
-                    <img src="images/logo/cid.png" alt="Logo CID" class="project-logo-img"
+                    <img src="images/Application/logo/cid.png" alt="Logo CID" class="project-logo-img"
                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                     <div class="project-logo-fallback"><i class="fas fa-building-columns"></i></div>
                   </div>
@@ -538,32 +561,32 @@
                   <li><i class="fas fa-database"></i> PostgreSQL</li>
                 </ul>
 
-                <!-- Preuves visuelles (1 à 4 captures Client Bank) -->
+                <!-- Preuves visuelles (Client Bank) -->
                 <div class="project-proofs-bar">
                   <span class="proofs-label mono-text"><i class="fas fa-images"></i> 4 Captures de référence :</span>
                   <div class="proof-thumbs" data-gallery="cid">
-                    <button class="proof-thumb active" data-img="images/Client Bank/home 1.png"
+                    <button class="proof-thumb active" data-img="images/Application/Client Bank/home 1.png"
                       data-caption="CID Banking — Tableau de bord compte &amp; Solde client"
                       title="Capture 1 : Accueil &amp; Solde">
-                      <img src="images/Client Bank/home 1.png" alt="Solde" />
+                      <img src="images/Application/Client Bank/home 1.png" alt="Solde" />
                       <span>01. Solde</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Client Bank/1 (1).PNG"
+                    <button class="proof-thumb" data-img="images/Application/Client Bank/1 (1).PNG"
                       data-caption="CID Banking — Liste &amp; Historique des opérations bancaires"
                       title="Capture 2 : Opérations">
-                      <img src="images/Client Bank/1 (1).PNG" alt="Opérations" />
+                      <img src="images/Application/Client Bank/1 (1).PNG" alt="Opérations" />
                       <span>02. Opérations</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Client Bank/1 (2).PNG"
+                    <button class="proof-thumb" data-img="images/Application/Client Bank/1 (2).PNG"
                       data-caption="CID Banking — Validation et reçu de transfert bancaire"
                       title="Capture 3 : Virement">
-                      <img src="images/Client Bank/1 (2).PNG" alt="Virement" />
+                      <img src="images/Application/Client Bank/1 (2).PNG" alt="Virement" />
                       <span>03. Transfert</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Client Bank/detail.png"
+                    <button class="proof-thumb" data-img="images/Application/Client Bank/detail.png"
                       data-caption="CID Banking — Détails d'opération &amp; Relevé de compte sécurisé"
                       title="Capture 4 : Détail">
-                      <img src="images/Client Bank/detail.png" alt="Détail" />
+                      <img src="images/Application/Client Bank/detail.png" alt="Détail" />
                       <span>04. Relevé</span>
                     </button>
                   </div>
@@ -586,7 +609,7 @@
                   <div class="phone-speaker"></div>
                   <div class="phone-camera"></div>
                   <div class="phone-screen" data-gallery-screen="cid">
-                    <img src="images/Client Bank/home 1.png" alt="CID Banking Interface" id="phone-img-cid"
+                    <img src="images/Application/Client Bank/home 1.png" alt="CID Banking Interface" id="phone-img-cid"
                       class="phone-display-img" />
                     <div class="phone-screen-overlay" data-gallery="cid" data-start="0">
                       <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</span>
@@ -597,18 +620,115 @@
               </div>
             </article>
 
-            <!-- MALISHI -->
-            <article class="feat-project" id="fp-malishi">
+            <!-- HEWO VTC (Application Mobile — 16 captures réelles) -->
+            <article class="feat-project" id="fp-hewo" data-category="mobile">
+              <div class="feat-project-content">
+                <!-- En-tête avec Logo du Projet -->
+                <div class="project-brand-badge">
+                  <div class="project-logo-box" style="background:linear-gradient(135deg,rgba(91,45,142,0.25),rgba(15,10,20,0.9));border-color:rgba(91,45,142,0.4);">
+                    <img src="images/Application/logo/hewo.png" alt="Logo Hewo" class="project-logo-img"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div class="project-logo-fallback" style="color:#A87FE0;"><i class="fas fa-car-side"></i></div>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text" style="color:var(--violet-pale);">03 · Application Mobile VTC &amp; Transport</span>
+                    <h3 class="feat-project-title">Hewo VTC</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Application VTC complète — interface passagers &amp; chauffeurs, matching en temps réel,
+                    calcul d'itinéraires GPS, tracking live, système de parcours et liste de courses. Dashboard
+                    administrateur centralisé. <strong style="color:var(--gold);">16 écrans documentés.</strong></p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fab fa-flutter"></i> Flutter</li>
+                  <li><i class="fab fa-angular"></i> Angular</li>
+                  <li><i class="fas fa-server"></i> Spring Boot</li>
+                  <li><i class="fas fa-map-location-dot"></i> Maps &amp; GPS</li>
+                  <li><i class="fas fa-plug"></i> WebSockets</li>
+                </ul>
+
+                <!-- Preuves visuelles (6 des 16 captures Hewo Mobile) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 6 Captures Mobile (16 au total) :</span>
+                  <div class="proof-thumbs" data-gallery="hewo" style="grid-template-columns:repeat(6,1fr);">
+                    <button class="proof-thumb active" data-img="images/Application/Hewo/Mobile/home.jpg"
+                      data-caption="Hewo VTC — Écran d'accueil &amp; Carte interactive" title="Accueil">
+                      <img src="images/Application/Hewo/Mobile/home.jpg" alt="Accueil" />
+                      <span>01. Home</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Application/Hewo/Mobile/login.jpg"
+                      data-caption="Hewo VTC — Connexion &amp; Authentification" title="Login">
+                      <img src="images/Application/Hewo/Mobile/login.jpg" alt="Login" />
+                      <span>02. Login</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Application/Hewo/Mobile/parcours.jpg"
+                      data-caption="Hewo VTC — Sélection du parcours &amp; Destination" title="Parcours">
+                      <img src="images/Application/Hewo/Mobile/parcours.jpg" alt="Parcours" />
+                      <span>03. Parcours</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Application/Hewo/Mobile/trajet.jpg"
+                      data-caption="Hewo VTC — Trajet en cours &amp; Tracking temps réel" title="Trajet">
+                      <img src="images/Application/Hewo/Mobile/trajet.jpg" alt="Trajet" />
+                      <span>04. Trajet</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Application/Hewo/Mobile/menu.jpg"
+                      data-caption="Hewo VTC — Menu principal &amp; Navigation" title="Menu">
+                      <img src="images/Application/Hewo/Mobile/menu.jpg" alt="Menu" />
+                      <span>05. Menu</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Application/Hewo/Mobile/profil.jpg"
+                      data-caption="Hewo VTC — Profil utilisateur &amp; Paramètres" title="Profil">
+                      <img src="images/Application/Hewo/Mobile/profil.jpg" alt="Profil" />
+                      <span>06. Profil</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="hewo" data-start="0"
+                    style="border-color:var(--violet-pale);color:var(--violet-pale);">
+                    <i class="fas fa-expand"></i> Voir les 16 écrans Mobile HD
+                  </button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener" class="feat-link" id="fl-hewo-gh"
+                    title="Voir le Code GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Mockup Smartphone Mobile -->
+              <div class="feat-project-device">
+                <div class="phone-mockup" data-gallery-target="hewo"
+                  style="box-shadow:0 0 0 2px rgba(91,45,142,0.35),0 25px 60px rgba(0,0,0,0.8),0 0 45px rgba(91,45,142,0.18);">
+                  <div class="phone-speaker"></div>
+                  <div class="phone-camera"></div>
+                  <div class="phone-screen" data-gallery-screen="hewo">
+                    <img src="images/Application/Hewo/Mobile/home.jpg" alt="Hewo VTC Interface" id="phone-img-hewo"
+                      class="phone-display-img" />
+                    <div class="phone-screen-overlay" data-gallery="hewo" data-start="0">
+                      <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</span>
+                    </div>
+                  </div>
+                  <div class="phone-home-indicator"></div>
+                </div>
+              </div>
+            </article>
+
+            <!-- MALISHI — E-Commerce Karité -->
+            <article class="feat-project feat-reverse" id="fp-malishi" data-category="mobile">
               <div class="feat-project-content">
                 <!-- En-tête avec Logo du Projet -->
                 <div class="project-brand-badge">
                   <div class="project-logo-box agro">
-                    <img src="images/logo/malishi.png" alt="Logo MaliShi" class="project-logo-img"
+                    <img src="images/Application/logo/malishi.png" alt="Logo MaliShi" class="project-logo-img"
                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                     <div class="project-logo-fallback"><i class="fas fa-leaf"></i></div>
                   </div>
                   <div>
-                    <span class="feat-overline mono-text">03 · E-Commerce &amp; Agro-business</span>
+                    <span class="feat-overline mono-text">04 · E-Commerce &amp; Agro-business</span>
                     <h3 class="feat-project-title">MaliShi — Produits Karité</h3>
                   </div>
                 </div>
@@ -625,29 +745,29 @@
                   <li><i class="fas fa-database"></i> MySQL</li>
                 </ul>
 
-                <!-- Preuves visuelles (1 à 4 captures) -->
+                <!-- Preuves visuelles -->
                 <div class="project-proofs-bar">
                   <span class="proofs-label mono-text"><i class="fas fa-images"></i> 4 Captures de référence :</span>
                   <div class="proof-thumbs" data-gallery="malishi">
-                    <button class="proof-thumb active" data-img="images/Mywa/boutique.jpg"
+                    <button class="proof-thumb active" data-img="images/Application/Mywa/boutique.jpg"
                       data-caption="MaliShi — Vitrine &amp; Rayons de produits Karité" title="Capture 1 : Vitrine">
-                      <img src="images/Mywa/boutique.jpg" alt="Vitrine" />
+                      <img src="images/Application/Mywa/boutique.jpg" alt="Vitrine" />
                       <span>01. Vitrine</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/boutik.jpg"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/boutik.jpg"
                       data-caption="MaliShi — Grille des articles &amp; Filtres par catégorie"
                       title="Capture 2 : Catalogue">
-                      <img src="images/Mywa/boutik.jpg" alt="Catalogue" />
+                      <img src="images/Application/Mywa/boutik.jpg" alt="Catalogue" />
                       <span>02. Catalogue</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/menu.jpg"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/menu.jpg"
                       data-caption="MaliShi — Navigation &amp; Gestion des catégories" title="Capture 3 : Menu">
-                      <img src="images/Mywa/menu.jpg" alt="Menu" />
+                      <img src="images/Application/Mywa/menu.jpg" alt="Menu" />
                       <span>03. Menu</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/home 1.jpg"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/home 1.jpg"
                       data-caption="MaliShi — Page d'accueil mobile &amp; Promotions" title="Capture 4 : Accueil">
-                      <img src="images/Mywa/home 1.jpg" alt="Accueil" />
+                      <img src="images/Application/Mywa/home 1.jpg" alt="Accueil" />
                       <span>04. Accueil</span>
                     </button>
                   </div>
@@ -670,7 +790,7 @@
                   <div class="phone-speaker"></div>
                   <div class="phone-camera"></div>
                   <div class="phone-screen" data-gallery-screen="malishi">
-                    <img src="images/Mywa/boutique.jpg" alt="MaliShi Interface Mobile" id="phone-img-malishi"
+                    <img src="images/Application/Mywa/boutique.jpg" alt="MaliShi Interface Mobile" id="phone-img-malishi"
                       class="phone-display-img" />
                     <div class="phone-screen-overlay" data-gallery="malishi" data-start="0">
                       <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</span>
@@ -681,18 +801,28 @@
               </div>
             </article>
 
-            <!-- MYWA DASHBOARD (Format Ordinateur / Desktop) -->
-            <article class="feat-project feat-reverse" id="fp-mywa-dash">
+          </div><!-- /featured-projects -->
+
+          <!-- ══ BLOC : Dashboards Web & Back-Office ══ -->
+          <div class="projects-category-divider" data-category="dashboard">
+            <div class="category-divider-label">
+              <i class="fas fa-desktop"></i> Dashboards Web · Back-Office
+            </div>
+          </div>
+
+          <!-- MYWA DASHBOARD (Format Ordinateur / Desktop) -->
+          <div class="featured-projects">
+            <article class="feat-project feat-reverse" id="fp-mywa-dash" data-category="dashboard">
               <div class="feat-project-content">
                 <!-- En-tête avec Logo du Projet -->
                 <div class="project-brand-badge">
                   <div class="project-logo-box">
-                    <img src="images/logo/MYWA.png" alt="Logo Mywa" class="project-logo-img"
+                    <img src="images/Application/logo/MYWA.png" alt="Logo Mywa" class="project-logo-img"
                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                     <div class="project-logo-fallback"><i class="fas fa-wallet"></i></div>
                   </div>
                   <div>
-                    <span class="feat-overline mono-text">04 · Dashboard Web &amp; Back-Office E-Commerce</span>
+                    <span class="feat-overline mono-text">05 · Dashboard Web &amp; Back-Office E-Commerce</span>
                     <h3 class="feat-project-title">Mywa — Dashboard Administrateur</h3>
                   </div>
                 </div>
@@ -711,32 +841,32 @@
                   <li><i class="fas fa-database"></i> PostgreSQL</li>
                 </ul>
 
-                <!-- Preuves visuelles (1 à 4 captures de Dashboard Mywa) -->
+                <!-- Preuves visuelles (Dashboards Mywa) -->
                 <div class="project-proofs-bar">
                   <span class="proofs-label mono-text"><i class="fas fa-desktop"></i> 4 Preuves Dashboard :</span>
                   <div class="proof-thumbs" data-gallery="mywa-dash">
-                    <button class="proof-thumb active" data-img="images/Mywa/Dashboard/Dashboard (1).png"
+                    <button class="proof-thumb active" data-img="images/Application/Mywa/Dashboard/Dashboard (1).png"
                       data-caption="Mywa Dashboard — Vue d'ensemble des ventes et métriques clés"
                       title="Capture 1 : Dashboard Vue Globale">
-                      <img src="images/Mywa/Dashboard/Dashboard (1).png" alt="Dashboard Vue Globale" />
+                      <img src="images/Application/Mywa/Dashboard/Dashboard (1).png" alt="Dashboard Vue Globale" />
                       <span>01. Dashboard</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/Dashboard/Dashboard (2).png"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/Dashboard/Dashboard (2).png"
                       data-caption="Mywa Dashboard — Graphiques analytiques de performance et chiffre d'affaires"
                       title="Capture 2 : Analytics Ventes">
-                      <img src="images/Mywa/Dashboard/Dashboard (2).png" alt="Analytics Ventes" />
+                      <img src="images/Application/Mywa/Dashboard/Dashboard (2).png" alt="Analytics Ventes" />
                       <span>02. Analytics</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/Dashboard/Dashboard (3).png"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/Dashboard/Dashboard (3).png"
                       data-caption="Mywa Dashboard — Administration des boutiques partenaires et catalogues"
                       title="Capture 3 : Gestion Marchands">
-                      <img src="images/Mywa/Dashboard/Dashboard (3).png" alt="Gestion Marchands" />
+                      <img src="images/Application/Mywa/Dashboard/Dashboard (3).png" alt="Gestion Marchands" />
                       <span>03. Boutiques</span>
                     </button>
-                    <button class="proof-thumb" data-img="images/Mywa/Dashboard/Dashboard (4).png"
+                    <button class="proof-thumb" data-img="images/Application/Mywa/Dashboard/Dashboard (4).png"
                       data-caption="Mywa Dashboard — Gestion des commandes, livraisons et flux clients"
                       title="Capture 4 : Commandes &amp; Stocks">
-                      <img src="images/Mywa/Dashboard/Dashboard (4).png" alt="Commandes &amp; Stocks" />
+                      <img src="images/Application/Mywa/Dashboard/Dashboard (4).png" alt="Commandes &amp; Stocks" />
                       <span>04. Commandes</span>
                     </button>
                   </div>
@@ -782,7 +912,7 @@
 
                     <!-- Affichage de l'écran du Laptop -->
                     <div class="laptop-screen" data-gallery-screen="mywa-dash">
-                      <img src="images/Mywa/Dashboard/Dashboard (1).png" alt="Mywa Dashboard Interface"
+                      <img src="images/Application/Mywa/Dashboard/Dashboard (1).png" alt="Mywa Dashboard Interface"
                         id="phone-img-mywa-dash" class="laptop-display-img" />
                       <div class="laptop-screen-overlay" data-gallery="mywa-dash" data-device="desktop" data-start="0">
                         <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir en HD</span>
@@ -798,75 +928,27 @@
                 </div>
               </div>
             </article>
+          </div><!-- /featured-projects dashboard -->
 
-          </div>
-
-          <!-- Other projects grid avec Logos et Preuves -->
-          <h3 class="other-projects-title">Autres Réalisations &amp; Dashboards</h3>
-          <div class="other-projects-grid">
-
-            <!-- Min Digital Sport -->
-            <div class="other-card" id="oc-sport">
-              <div class="other-card-header">
-                <div class="other-project-logo">
-                  <img src="images/logo/sport.png" alt="Logo Sport" class="other-logo-img"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-                  <div class="other-logo-fallback"><i class="fas fa-futbol"></i></div>
-                </div>
-                <div class="other-links">
-                  <button class="card-proof-btn" data-gallery="sport" data-start="0" title="Voir les captures"><i
-                      class="fas fa-images"></i> 4 Preuves</button>
-                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-              <span class="card-type-tag mono-text">Mobile &amp; Web</span>
-              <h4>Min Digital Sport</h4>
-              <p>Plateforme numérique sportive pour le suivi des athlètes — gestion des rôles, géolocalisation des
-                événements sportifs et upload de fichiers média.</p>
-              <ul class="other-tech">
-                <li>Flutter</li>
-                <li>Angular</li>
-                <li>Spring Boot</li>
-              </ul>
-            </div>
-
-            <!-- Hewo VTC -->
-            <div class="other-card" id="oc-hewo">
-              <div class="other-card-header">
-                <div class="other-project-logo">
-                  <img src="images/logo/hewo.png" alt="Logo Hewo" class="other-logo-img"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-                  <div class="other-logo-fallback"><i class="fas fa-car-side"></i></div>
-                </div>
-                <div class="other-links">
-                  <button class="card-proof-btn" data-gallery="hewo" data-start="0" title="Voir les captures"><i
-                      class="fas fa-images"></i> 4 Preuves</button>
-                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-              <span class="card-type-tag mono-text">Mobile VTC &amp; Tracking</span>
-              <h4>Hewo VTC</h4>
-              <p>Application VTC complète — app passagers et chauffeurs, dashboard d'administration centralisé, calcul
-                d'itinéraires et tracking GPS temps réel.</p>
-              <ul class="other-tech">
-                <li>Flutter</li>
-                <li>Angular</li>
-                <li>Spring Boot</li>
-                <li>WebSockets</li>
-              </ul>
-            </div>
+          <!-- ── Autres Dashboards & Logiciels (Grid 3 cols) ── -->
+          <h3 class="other-projects-title">Dashboards &amp; Logiciels Métier</h3>
+          <div class="other-projects-grid" id="other-grid-dashboards">
 
             <!-- Gestion de Paie (Dashboard) -->
-            <div class="other-card" id="oc-paie">
+            <div class="other-card" id="oc-paie" data-category="dashboard">
+              <div class="other-card-thumb">
+                <img src="images/Application/Gestion de paie/PC/Capture d'écran 2026-09-29 083616.png" alt="Gestion Paie Dashboard" />
+                <div class="other-card-thumb-overlay"></div>
+              </div>
               <div class="other-card-header">
                 <div class="other-project-logo">
-                  <img src="images/logo/paie.png" alt="Logo Paie" class="other-logo-img"
+                  <img src="images/Application/logo/paie.png" alt="Logo Paie" class="other-logo-img"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                   <div class="other-logo-fallback"><i class="fas fa-file-invoice-dollar"></i></div>
                 </div>
                 <div class="other-links">
                   <button class="card-proof-btn" data-gallery="paie" data-device="desktop" data-start="0"
-                    title="Voir les captures"><i class="fas fa-desktop"></i> Dashboard</button>
+                    title="Voir les captures"><i class="fas fa-desktop"></i> 7 Captures</button>
                   <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
                 </div>
               </div>
@@ -882,17 +964,51 @@
               </ul>
             </div>
 
-            <!-- Quantix — Stock (Dashboard) -->
-            <div class="other-card" id="oc-quantix">
+            <!-- Hewo VTC — Dashboard Admin -->
+            <div class="other-card" id="oc-hewo-dash" data-category="dashboard">
+              <div class="other-card-thumb">
+                <img src="images/Application/Hewo/Mobile/home.jpg" alt="Hewo Dashboard" />
+                <div class="other-card-thumb-overlay"></div>
+              </div>
               <div class="other-card-header">
                 <div class="other-project-logo">
-                  <img src="images/logo/quantix.png" alt="Logo Quantix" class="other-logo-img"
+                  <img src="images/Application/logo/hewo.png" alt="Logo Hewo" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-car-side"></i></div>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="hewo" data-start="0" title="Voir les captures"><i
+                      class="fas fa-images"></i> 16 Écrans</button>
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Admin VTC &amp; Dispatch</span>
+              <h4>Hewo — Dashboard Admin</h4>
+              <p>Back-office VTC : supervision des chauffeurs en temps réel, gestion des courses, analytics de revenus
+                et dashboard de dispatching.</p>
+              <ul class="other-tech">
+                <li>Angular</li>
+                <li>Spring Boot</li>
+                <li>WebSockets</li>
+                <li>Maps API</li>
+              </ul>
+            </div>
+
+            <!-- Quantix — Stock (Dashboard) -->
+            <div class="other-card" id="oc-quantix" data-category="dashboard">
+              <div class="other-card-thumb" style="background:#0d1015;">
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(201,168,76,0.3);font-size:2.5rem;">
+                  <i class="fas fa-boxes-stacked"></i>
+                </div>
+                <div class="other-card-thumb-overlay"></div>
+              </div>
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/Application/logo/quantix.png" alt="Logo Quantix" class="other-logo-img"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                   <div class="other-logo-fallback"><i class="fas fa-boxes-stacked"></i></div>
                 </div>
                 <div class="other-links">
-                  <button class="card-proof-btn" data-gallery="quantix" data-device="desktop" data-start="0"
-                    title="Voir les captures"><i class="fas fa-desktop"></i> Dashboard</button>
                   <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
                 </div>
               </div>
@@ -908,17 +1024,48 @@
               </ul>
             </div>
 
-            <!-- AppGest Dist (Mobile & Dashboard) -->
-            <div class="other-card" id="oc-appgest">
+            <!-- Min Digital Sport -->
+            <div class="other-card" id="oc-sport" data-category="mobile">
+              <div class="other-card-thumb">
+                <img src="images/Application/logo/Mindigitalsport.png" alt="Min Digital Sport" style="object-fit:contain;padding:20px;background:#080c14;" />
+                <div class="other-card-thumb-overlay"></div>
+              </div>
               <div class="other-card-header">
                 <div class="other-project-logo">
-                  <img src="images/logo/appgest.png" alt="Logo AppGest" class="other-logo-img"
+                  <img src="images/Application/logo/Mindigitalsport.png" alt="Logo Sport" class="other-logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="other-logo-fallback"><i class="fas fa-futbol"></i></div>
+                </div>
+                <div class="other-links">
+                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Mobile &amp; Web Sportif</span>
+              <h4>Min Digital Sport</h4>
+              <p>Plateforme numérique sportive pour le suivi des athlètes — gestion des rôles, géolocalisation des
+                événements sportifs et upload de fichiers média.</p>
+              <ul class="other-tech">
+                <li>Flutter</li>
+                <li>Angular</li>
+                <li>Spring Boot</li>
+              </ul>
+            </div>
+
+            <!-- AppGest Distribution -->
+            <div class="other-card" id="oc-appgest" data-category="mobile">
+              <div class="other-card-thumb" style="background:#0d100d;">
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(46,204,113,0.3);font-size:2.5rem;">
+                  <i class="fas fa-truck-ramp-box"></i>
+                </div>
+                <div class="other-card-thumb-overlay"></div>
+              </div>
+              <div class="other-card-header">
+                <div class="other-project-logo">
+                  <img src="images/Application/logo/appgest.png" alt="Logo AppGest" class="other-logo-img"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                   <div class="other-logo-fallback"><i class="fas fa-truck-ramp-box"></i></div>
                 </div>
                 <div class="other-links">
-                  <button class="card-proof-btn" data-gallery="appgest" data-start="0" title="Voir les captures"><i
-                      class="fas fa-images"></i> 4 Preuves</button>
                   <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
                 </div>
               </div>
@@ -933,31 +1080,524 @@
               </ul>
             </div>
 
-            <!-- Pixel Addict Studio (Branding / Design) -->
-            <div class="other-card" id="oc-pixel">
-              <div class="other-card-header">
-                <div class="other-project-logo">
-                  <img src="images/logo/pixel.png" alt="Logo Pixel Addict" class="other-logo-img"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-                  <div class="other-logo-fallback"><i class="fas fa-bezier-curve"></i></div>
+          </div><!-- /other-projects-grid -->
+
+          <!-- ══ BLOC : Design Graphique & Direction Artistique ══ -->
+          <div class="projects-category-divider" data-category="design" style="margin-top:80px;">
+            <div class="category-divider-label" style="border-color:rgba(184,92,56,0.35);color:var(--terra-pale);">
+              <i class="fas fa-palette"></i> Design Graphique · Direction Artistique · Kaizen Studios
+            </div>
+          </div>
+
+          <!-- Intro section Design -->
+          <div class="design-section-intro" data-category="design">
+            <div class="design-section-text">
+              <h3>Kaizen Studios —<br><span style="color:var(--terra-pale);">Showroom Direction Artistique</span></h3>
+              <p>
+                Mon agence et studio de création visuelle. De l'affiche grand format au catalogue éditorial de luxe,
+                chaque réalisation est pensée pour <strong style="color:var(--text);">raconter une histoire forte</strong>,
+                sublimer la matière et marquer les esprits par une identité visuelle inoubliable.
+              </p>
+              <div class="design-tools-list">
+                <span class="design-tool-pill"><i class="fas fa-paint-brush"></i> Photoshop</span>
+                <span class="design-tool-pill"><i class="fas fa-bezier-curve"></i> Illustrator</span>
+                <span class="design-tool-pill"><i class="fas fa-file-alt"></i> InDesign</span>
+                <span class="design-tool-pill"><i class="fas fa-pen-nib"></i> Figma</span>
+                <span class="design-tool-pill"><i class="fas fa-layer-group"></i> Branding 360°</span>
+                <span class="design-tool-pill"><i class="fas fa-print"></i> Print &amp; Scénographie</span>
+              </div>
+            </div>
+            <div class="design-stats-col">
+              <div class="design-stat-box">
+                <span class="design-stat-num">30+</span>
+                <span class="design-stat-lbl">Créations graphiques</span>
+              </div>
+              <div class="design-stat-box">
+                <span class="design-stat-num">8+</span>
+                <span class="design-stat-lbl">Marques &amp; Entreprises</span>
+              </div>
+              <div class="design-stat-box">
+                <span class="design-stat-num">4</span>
+                <span class="design-stat-lbl">Supports &amp; Formats</span>
+              </div>
+              <div class="design-stat-box">
+                <span class="design-stat-num">100%</span>
+                <span class="design-stat-lbl">Rendus Print réels</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ SHOWCASE 1 : ZABBAN HOLDING — LE LOOKBOOK ÉDITORIAL LUXE ══ -->
+          <div class="featured-projects" data-category="design">
+            <article class="feat-project feat-design" id="fp-zabban" data-category="design">
+              <div class="feat-project-content">
+                <div class="project-brand-badge">
+                  <div class="project-logo-box">
+                    <i class="fas fa-gem" style="font-size:1.4rem;color:var(--terra-pale);"></i>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text" style="color:var(--terra-pale);">06 · Édition de Prestige &amp; Direction Artistique</span>
+                    <h3 class="feat-project-title">Zabban Holding — Catalogue &amp; Lookbook</h3>
+                  </div>
                 </div>
-                <div class="other-links">
-                  <a href="https://github.com/Cheikh-T" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+
+                <div class="feat-project-desc">
+                  <p>Direction artistique complète et conception du catalogue produits cosmétique et bien-être de 18 pages pour Zabban Holding. Mise en page éditoriale haute couture, composition packshot soignée, harmonie des teintes or et noir, et finitions d'impression luxueuses.</p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fas fa-paint-brush"></i> Photoshop</li>
+                  <li><i class="fas fa-file-alt"></i> InDesign</li>
+                  <li><i class="fas fa-book-open"></i> Édition 18 Pages</li>
+                  <li><i class="fas fa-star"></i> Packshots Produits</li>
+                  <li><i class="fas fa-crown"></i> Cosmétique &amp; Beauté</li>
+                </ul>
+
+                <!-- Preuves visuelles (Spreads du catalogue Zabban avec défilement 3s) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 5 Pages de référence (18 au total) :</span>
+                  <div class="proof-thumbs" data-gallery="zabban" style="grid-template-columns:repeat(5,1fr);">
+                    <button class="proof-thumb active" data-img="images/Programme vusiel/Zabban/Produit/1 (1).PNG"
+                      data-caption="Zabban — 01. Visuel produit premium collection" title="Page 1 : Couverture">
+                      <img src="images/Programme vusiel/Zabban/Produit/1 (1).PNG" alt="Couverture" />
+                      <span>01. Cover</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Zabban/Produit/1 (2).PNG"
+                      data-caption="Zabban — 02. Présentation catalogue page 2" title="Page 2 : Édito">
+                      <img src="images/Programme vusiel/Zabban/Produit/1 (2).PNG" alt="Édito" />
+                      <span>02. Édito</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Zabban/Produit/1 (3).PNG"
+                      data-caption="Zabban — 03. Déclinaison colorimétrique" title="Page 3 : Gamme">
+                      <img src="images/Programme vusiel/Zabban/Produit/1 (3).PNG" alt="Gamme" />
+                      <span>03. Gamme</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Zabban/Produit/1 (4).PNG"
+                      data-caption="Zabban — 04. Mise en page éditoriale premium" title="Page 4 : Lookbook">
+                      <img src="images/Programme vusiel/Zabban/Produit/1 (4).PNG" alt="Lookbook" />
+                      <span>04. Lookbook</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Zabban/Produit/1 (1).JPEG"
+                      data-caption="Zabban — 05. Visuel lifestyle produit" title="Page 5 : Ambiance">
+                      <img src="images/Programme vusiel/Zabban/Produit/1 (1).JPEG" alt="Ambiance" />
+                      <span>05. Lifestyle</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="zabban" data-start="0">
+                    <i class="fas fa-book-open"></i> Feuilleter le Catalogue HD (18 Pages)
+                  </button>
                 </div>
               </div>
-              <span class="card-type-tag mono-text">Direction Artistique</span>
-              <h4>Pixel Addict Studio</h4>
-              <p>Mon agence de création visuelle — chartes graphiques complètes, UI/UX design, identités de marque pour
-                Zabban Holding, Doumanba et THL Technologies.</p>
+
+              <!-- Mockup Lookbook Éditorial Ouvert -->
+              <div class="feat-project-device">
+                <div class="lookbook-mockup" data-gallery-target="zabban">
+                  <div class="lookbook-book">
+                    <div class="lookbook-binding-line">
+                      <div class="lookbook-binding-gold"></div>
+                    </div>
+                    <div class="lookbook-header-bar">
+                      <span><i class="fas fa-gem"></i> ZABBAN HOLDING — LUXURY CATALOG</span>
+                      <span>18 PAGES · HAUTE DÉFINITION</span>
+                    </div>
+                    <div class="lookbook-pages-wrapper" data-gallery-screen="zabban">
+                      <div class="lookbook-gutter-shadow"></div>
+                      <div class="lookbook-gloss-sheen"></div>
+                      <img src="images/Programme vusiel/Zabban/Produit/1 (1).PNG" alt="Zabban Lookbook Catalogue" id="phone-img-zabban" class="lookbook-display-img" />
+                      <div class="phone-screen-overlay" data-gallery="zabban" data-start="0">
+                        <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Feuilleter en HD</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- ══ SHOWCASE 2 : TOTEMS & KAKÉMONOS ROLL-UP (FORMAT VERTICAL 2M) ══ -->
+            <article class="feat-project feat-reverse feat-design" id="fp-kakemono" data-category="design">
+              <div class="feat-project-content">
+                <div class="project-brand-badge">
+                  <div class="project-logo-box" style="background:linear-gradient(135deg,rgba(184,92,56,0.3),rgba(15,10,12,0.95));border-color:rgba(184,92,56,0.45);">
+                    <i class="fas fa-scroll" style="font-size:1.4rem;color:var(--terra-pale);"></i>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text" style="color:var(--terra-pale);">07 · Signalétique Événementielle &amp; Totems (2m)</span>
+                    <h3 class="feat-project-title">Kakémonos &amp; Totems Roll-Up</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Conception graphique grand format vertical et impression haute définition de totems roll-up de 2 mètres pour salons, séminaires, conférences et cérémonies d'entreprise. Maîtrise des contraintes d'enrouleur mécanique, de la lisibilité à distance et supervision du déploiement physique en salle.</p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fas fa-arrows-alt-v"></i> Format Vertical (85×200cm)</li>
+                  <li><i class="fas fa-vector-square"></i> Illustrator</li>
+                  <li><i class="fas fa-image"></i> Photoshop</li>
+                  <li><i class="fas fa-scroll"></i> Toile PVC/Textile HD</li>
+                  <li><i class="fas fa-camera"></i> Photos In-Situ Réelles</li>
+                </ul>
+
+                <!-- Preuves visuelles (Kakémonos + Photos d'installation) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 5 Réalisations &amp; Déploiements en Salle :</span>
+                  <div class="proof-thumbs" data-gallery="kakemono" style="grid-template-columns:repeat(5,1fr);">
+                    <button class="proof-thumb active" data-img="images/Programme vusiel/Affiche &amp; etiquette/KAKEMONO.jpg"
+                      data-caption="Kakémono Royal — Événementiel prestige" title="Kakémono 1">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/KAKEMONO.jpg" alt="Kakémono Royal" />
+                      <span>01. Royal</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/kake 1.jpg"
+                      data-caption="Kakémono vertical grand format — Rendu salon professionnel" title="Kakémono Salon">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/kake 1.jpg" alt="Kakémono Salon" />
+                      <span>02. Salon</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/Kakemono Reine et roi .jpg"
+                      data-caption="Kakémono Reine &amp; Roi — Cérémonie officielle" title="Reine &amp; Roi">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/Kakemono Reine et roi .jpg" alt="Reine &amp; Roi" />
+                      <span>03. Reine &amp; Roi</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_01_23_04_38_IMG_0263.JPG"
+                      data-caption="Photo en salle — Kakémono installé en situation réelle de conférence" title="Salle Réelle">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_01_23_04_38_IMG_0263.JPG" alt="Salle Réelle" />
+                      <span>04. Salle Réelle</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_01_23_04_38_IMG_0280.JPG"
+                      data-caption="Photo scène — Décoration &amp; Scénographie d'accueil" title="Scénographie">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_01_23_04_38_IMG_0280.JPG" alt="Scénographie" />
+                      <span>05. Scène Réelle</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="kakemono" data-start="0">
+                    <i class="fas fa-expand"></i> Inspecter les 8 Kakémonos &amp; Installations Terrain
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mockup Totem Roll-Up Métallique Vertical 2m -->
+              <div class="feat-project-device">
+                <div class="rollup-mockup-wrapper">
+                  <div class="rollup-mockup" data-gallery-target="kakemono">
+                    <div class="rollup-top-clamp">
+                      <div class="rollup-clamp-screw-left"></div>
+                      <div class="rollup-clamp-screw-right"></div>
+                    </div>
+                    <div class="rollup-banner" data-gallery-screen="kakemono">
+                      <div class="rollup-canvas-texture"></div>
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/KAKEMONO.jpg" alt="Kakémono Grand Format" id="phone-img-kakemono" class="rollup-display-img" />
+                      <div class="rollup-banner-overlay" data-gallery="kakemono" data-start="0">
+                        <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir le Totem</span>
+                      </div>
+                    </div>
+                    <div class="rollup-base-cassette">
+                      <div class="rollup-base-slot"></div>
+                    </div>
+                    <div class="rollup-feet"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- ══ SHOWCASE 3 : BÂCHES ÉVÉNEMENTIELLES & SCÉNOGRAPHIE (5×3M) ══ -->
+            <article class="feat-project feat-design" id="fp-bache" data-category="design">
+              <div class="feat-project-content">
+                <div class="project-brand-badge">
+                  <div class="project-logo-box" style="background:linear-gradient(135deg,rgba(201,168,76,0.3),rgba(15,10,12,0.95));border-color:rgba(201,168,76,0.45);">
+                    <i class="fas fa-panorama" style="font-size:1.4rem;color:var(--gold);"></i>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text" style="color:var(--gold);">08 · Scénographie &amp; Décors Scéniques Géants (5×3m)</span>
+                    <h3 class="feat-project-title">Bâches Événementielles Grand Format</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Conception panoramique monumentale (jusqu'à 5000×2700 px à 300 DPI) pour fonds de scène de festivals, podiums de conférences et cérémonies d'envergure. Étude de tension sur ossatures métalliques tubulaires (truss), disposition technique des œillets de fixation et rendu optimal sous projecteurs de scène.</p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fas fa-arrows-alt-h"></i> Panoramique (5000×2700px)</li>
+                  <li><i class="fas fa-vector-square"></i> Illustrator</li>
+                  <li><i class="fas fa-image"></i> Photoshop CMJN</li>
+                  <li><i class="fas fa-cubes"></i> Structure Scénique Truss</li>
+                  <li><i class="fas fa-lightbulb"></i> Éclairage Scène Live</li>
+                </ul>
+
+                <!-- Preuves visuelles (Bâche ROSE + Photos de scène réelles) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 5 Visuels &amp; Photos de Scène Live :</span>
+                  <div class="proof-thumbs" data-gallery="bache" style="grid-template-columns:repeat(5,1fr);">
+                    <button class="proof-thumb active" data-img="images/Programme vusiel/Affiche &amp; etiquette/Bâche ROSE.jpg"
+                      data-caption="Bâche géante ROSE Event — Impression grand format panoramique" title="Bâche Rose HD">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/Bâche ROSE.jpg" alt="Bâche Rose HD" />
+                      <span>01. Bâche HD</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_01_30_13_35_IMG_0207.JPEG"
+                      data-caption="Photo de scène live — Bâche montée sur structure lors de l'événement" title="Scène Live">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_01_30_13_35_IMG_0207.JPEG" alt="Scène Live" />
+                      <span>02. Scène Live</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_02_01_15_59_IMG_0831.JPG"
+                      data-caption="Structure métallique scénique &amp; Pose de la bâche" title="Montage Scène">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_02_01_15_59_IMG_0831.JPG" alt="Montage Scène" />
+                      <span>03. Montage</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_02_01_15_59_IMG_0832.JPG"
+                      data-caption="Détail de fixation &amp; Œillets de tension périmétriques" title="Œillets &amp; Fixation">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_02_01_15_59_IMG_0832.JPG" alt="Œillets &amp; Fixation" />
+                      <span>04. Œillets</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_02_01_15_59_IMG_0833.JPG"
+                      data-caption="Vue d'ensemble de la scène illuminée avec public" title="Ambiance Scène">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_02_01_15_59_IMG_0833.JPG" alt="Ambiance Scène" />
+                      <span>05. Live Event</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="bache" data-start="0">
+                    <i class="fas fa-expand"></i> Inspecter les 6 Bâches &amp; Photos Scéniques HD
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mockup Structure Métallique & Bâche Scénique Grand Format -->
+              <div class="feat-project-device">
+                <div class="stage-truss-mockup-wrapper">
+                  <div class="stage-truss-mockup" data-gallery-target="bache">
+                    <div class="stage-truss-beam">
+                      <div class="stage-spotlight-left"></div>
+                      <div class="stage-spotlight-right"></div>
+                    </div>
+                    <div class="stage-banner-canvas" data-gallery-screen="bache">
+                      <div class="stage-banner-texture"></div>
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/Bâche ROSE.jpg" alt="Bâche Scénique Grand Format" id="laptop-img-bache" class="stage-banner-display-img" />
+                      <div class="stage-banner-overlay" data-gallery="bache" data-start="0">
+                        <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Explorer la Bâche Grand Format</span>
+                      </div>
+                    </div>
+                    <div class="stage-eyelets-top">
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                    </div>
+                    <div class="stage-eyelets-bottom">
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                      <span class="stage-eyelet-dot"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- ══ SHOWCASE 4 : AFFICHES ÉVÉNEMENTIELLES & POSTERS STUDIO ══ -->
+            <article class="feat-project feat-reverse feat-design" id="fp-affiche" data-category="design">
+              <div class="feat-project-content">
+                <div class="project-brand-badge">
+                  <div class="project-logo-box" style="background:linear-gradient(135deg,rgba(184,92,56,0.3),rgba(15,10,12,0.95));border-color:rgba(184,92,56,0.45);">
+                    <i class="fas fa-bullhorn" style="font-size:1.4rem;color:var(--terra-pale);"></i>
+                  </div>
+                  <div>
+                    <span class="feat-overline mono-text" style="color:var(--terra-pale);">09 · Affiches Événementielles &amp; Direction Artistique</span>
+                    <h3 class="feat-project-title">Affiches &amp; Posters Publicitaires</h3>
+                  </div>
+                </div>
+
+                <div class="feat-project-desc">
+                  <p>Création d'affiches d'impact pour festivals, galas, événements culturels et lancements de produits. Composition visuelle immersive, typographie de titrage personnalisée, contrastes chromatiques vibrants et présentations haut de gamme sur mockups studio et cadres de galerie d'art.</p>
+                </div>
+
+                <ul class="feat-tech-list">
+                  <li><i class="fas fa-paint-brush"></i> Photoshop</li>
+                  <li><i class="fas fa-bezier-curve"></i> Illustrator</li>
+                  <li><i class="fas fa-font"></i> Typographie Titrage</li>
+                  <li><i class="fas fa-cube"></i> Mockups Studio 3D</li>
+                  <li><i class="fas fa-print"></i> Haute Définition Print</li>
+                </ul>
+
+                <!-- Preuves visuelles (Mockups Affiches HD + Direction Artistique) -->
+                <div class="project-proofs-bar">
+                  <span class="proofs-label mono-text"><i class="fas fa-images"></i> 5 Affiches &amp; Mockups Studio :</span>
+                  <div class="proof-thumbs" data-gallery="affiche" style="grid-template-columns:repeat(5,1fr);">
+                    <button class="proof-thumb active" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_02_11_23_43_IMG_1295.PNG"
+                      data-caption="Mockup Affiche Festival HD — Version Studio" title="Affiche Festival">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_02_11_23_43_IMG_1295.PNG" alt="Affiche Festival" />
+                      <span>01. Festival</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/2026_02_11_23_51_IMG_1308.PNG"
+                      data-caption="Affiche Événementielle HD — Éclairage Nocturne" title="Night Edition">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_02_11_23_51_IMG_1308.PNG" alt="Night Edition" />
+                      <span>02. Night Ed.</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/cover 2.jpg"
+                      data-caption="Pochette musicale &amp; Direction artistique d'ambiance" title="Art Direction">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/cover 2.jpg" alt="Art Direction" />
+                      <span>03. Artwork</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/cover tracklist.png"
+                      data-caption="Tracklist &amp; Composition typographique éditoriale" title="Tracklist Typo">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/cover tracklist.png" alt="Tracklist Typo" />
+                      <span>04. Tracklist</span>
+                    </button>
+                    <button class="proof-thumb" data-img="images/Programme vusiel/Affiche &amp; etiquette/Soumbala Assaisonné copie.jpg"
+                      data-caption="Étiquette &amp; Packaging grand format terroir" title="Packaging Grand Format">
+                      <img src="images/Programme vusiel/Affiche &amp; etiquette/Soumbala Assaisonné copie.jpg" alt="Packaging Grand Format" />
+                      <span>05. Packaging</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="feat-links">
+                  <button class="btn-open-lightbox" data-gallery="affiche" data-start="0">
+                    <i class="fas fa-expand"></i> Inspecter les 6 Affiches, Posters &amp; Covers
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mockup Cadre Galerie / Affiche Studio HD -->
+              <div class="feat-project-device">
+                <div class="poster-frame-mockup-wrapper">
+                  <div class="poster-frame-mockup" data-gallery-target="affiche">
+                    <div class="poster-gallery-lamp"></div>
+                    <div class="poster-matting">
+                      <div class="poster-screen" data-gallery-screen="affiche">
+                        <img src="images/Programme vusiel/Affiche &amp; etiquette/2026_02_11_23_43_IMG_1295.PNG" alt="Affiche Événementielle HD" id="laptop-img-affiche" class="poster-display-img" />
+                        <div class="poster-glass-glare"></div>
+                        <div class="poster-screen-overlay" data-gallery="affiche" data-start="0">
+                          <span class="screen-zoom-hint"><i class="fas fa-search-plus"></i> Agrandir l'Affiche HD</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div><!-- /featured-projects design -->
+
+          <!-- ══ SOUS-GRILLE DESIGN : VINYLE, LOGOS & SPORT (3 COLONNES) ══ -->
+          <h3 class="other-projects-title" data-category="design">Identités Visuelles, Musique &amp; Packaging</h3>
+          <div class="other-projects-grid" data-category="design">
+
+            <!-- Card 1: Kaizen Made It — Pochette Vinyle Collector 3D -->
+            <div class="other-card vinyl-card" id="oc-vinyl" data-category="design">
+              <div class="vinyl-mockup-wrapper">
+                <div class="vinyl-jacket">
+                  <div class="vinyl-jacket-crease"></div>
+                  <img src="images/Programme vusiel/Affiche &amp; etiquette/cover officiel 1 by Kaizen  made it-Récupéré 11.png" alt="Kaizen Made It Cover" />
+                </div>
+                <div class="vinyl-disk">
+                  <div class="vinyl-disk-grooves">
+                    <div class="vinyl-center-label">
+                      <span>KAIZEN</span>
+                      <span style="font-size:0.42rem;">LP 33T</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="other-card-header" style="margin-top:14px;">
+                <div class="other-project-logo">
+                  <i class="fas fa-record-vinyl" style="font-size:1.3rem;color:var(--gold);"></i>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="affiche" data-start="2" title="Voir les covers"><i class="fas fa-music"></i> 3 Covers</button>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Pochette Musicale &amp; Vinyle</span>
+              <h4>Kaizen Made It — Album Art</h4>
+              <p>Direction artistique d'albums musicaux, tracklists typographiques et visuels officiels de singles. Travail chromatique soigné et packaging vinyle collector.</p>
               <ul class="other-tech">
-                <li>Figma</li>
                 <li>Photoshop</li>
                 <li>Illustrator</li>
-                <li>UI/UX</li>
+                <li>Cover Art</li>
+                <li>Typography</li>
               </ul>
             </div>
 
+            <!-- Card 2: Brand Identity Board — Logos Vectoriels & Print -->
+            <div class="other-card brand-board-card" id="oc-logos-board" data-category="design">
+              <div class="brand-board-preview">
+                <div class="brand-board-grid-pattern"></div>
+                <img class="brand-board-logo-img" src="images/Programme vusiel/Logo/GAME XP LOGO 1-01.png" alt="Logos Kaizen Studios" />
+                <div class="brand-board-specimen-pills">
+                  <span class="brand-specimen-dot" style="background:#54C5F8;"></span>
+                  <span class="brand-specimen-dot" style="background:#C9A84C;"></span>
+                  <span class="brand-specimen-dot" style="background:#B85C38;"></span>
+                  <span class="brand-specimen-dot" style="background:#2ECC71;"></span>
+                </div>
+              </div>
+              <div class="other-card-header" style="margin-top:14px;">
+                <div class="other-project-logo">
+                  <i class="fas fa-bezier-curve" style="font-size:1.3rem;color:var(--terra-pale);"></i>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="logos" data-start="0" title="Voir les logos"><i class="fas fa-star"></i> 7 Logos</button>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Identités de Marque 360°</span>
+              <h4>Logos &amp; Systèmes Visuels</h4>
+              <p>Création d'identités visuelles complètes : Game XP (gaming/esport), Tunka Invest (finance), Kaizen officiel et concepts typographiques avec grille de construction géométrique.</p>
+              <ul class="other-tech">
+                <li>Illustrator</li>
+                <li>Vectoriel</li>
+                <li>Charte Graphique</li>
+                <li>Golden Ratio</li>
+              </ul>
+            </div>
+
+            <!-- Card 3: Barra Challenge & Soumbala — Packaging & Sport -->
+            <div class="other-card sport-brand-card" id="oc-barra-card" data-category="design">
+              <div class="other-card-thumb" style="height:220px;background:#080a0e;display:flex;align-items:center;justify-content:center;">
+                <img src="images/Programme vusiel/Barra challenge/logo (1).JPG" alt="Barra Challenge Sport" style="object-fit:cover;opacity:0.9;" />
+                <div class="other-card-thumb-overlay"></div>
+              </div>
+              <div class="other-card-header" style="margin-top:14px;">
+                <div class="other-project-logo">
+                  <i class="fas fa-trophy" style="font-size:1.3rem;color:var(--gold);"></i>
+                </div>
+                <div class="other-links">
+                  <button class="card-proof-btn" data-gallery="barra" data-start="0" title="Voir le logo"><i class="fas fa-futbol"></i> Logo Sport</button>
+                </div>
+              </div>
+              <span class="card-type-tag mono-text">Sport &amp; Packaging Terroir</span>
+              <h4>Barra Challenge &amp; Packaging</h4>
+              <p>Identité visuelle sportive déployée sur bannières et maillots (Barra Challenge) ainsi que conception d'étiquettes de packaging agroalimentaire traditionnel (Soumbala Assaisonné).</p>
+              <ul class="other-tech">
+                <li>Branding Sport</li>
+                <li>Packaging</li>
+                <li>Étiquettes</li>
+                <li>Print Réel</li>
+              </ul>
+            </div>
+
+          </div><!-- /other-projects-grid design -->
+
+          <!-- ══ BANNIÈRE MANIFESTE STUDIO KAIZEN STUDIOS ══ -->
+          <div class="studio-manifesto-banner" data-category="design">
+            <div class="studio-manifesto-text">
+              <h4>Kaizen Studios — L'Excellence du Pixel au Code</h4>
+              <p>
+                De l'identité visuelle jusqu'au produit digital final, notre studio conçoit des expériences de marque cohérentes, audacieuses et élégantes. Chaque typographie, couleur et composition graphique est pensée pour valoriser votre projet et captiver votre audience.
+              </p>
+            </div>
+            <div class="studio-manifesto-cta">
+              <a href="#contact" class="btn-gold" style="white-space:nowrap;padding:12px 28px;">
+                <i class="fas fa-paper-plane"></i> Collaborer sur un Projet Design
+              </a>
+            </div>
           </div>
+
         </div>
       </section>
 
