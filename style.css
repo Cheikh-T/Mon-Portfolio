@@ -2805,7 +2805,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
   display: none;
   position: fixed; top: 0; left: 0; right: 0;
   height: 64px;
-  background: rgba(8, 6, 10, 0.94);
+  background: rgba(8, 6, 10, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -2865,8 +2865,37 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ══════════════════════════════════════════════════════════════════
-   RESPONSIVE DESIGN SYSTEM — ULTRA FLEXIBLE & ADAPTABLE
+   RESPONSIVE DESIGN SYSTEM — ULTRA FLEXIBLE, FLUID & INTELLIGENT
    ══════════════════════════════════════════════════════════════════ */
+
+/* RÈGLES DE SÉCURITÉ UNIVERSELLES ANTI-DÉBORDEMENT */
+html, body, .layout, .main-content {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, li, strong, button {
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  max-width: 100%;
+}
+
+.btn-gold, .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal !important;
+  line-height: 1.3;
+}
+.btn-gold span, .btn-outline span {
+  white-space: normal !important;
+  display: inline-block;
+  max-width: 100%;
+}
 
 /* Large Screens (1440px+) */
 @media (min-width: 1440px) {
@@ -2884,7 +2913,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 @media (max-width: 1200px) {
   .hero-section {
     grid-template-columns: 1fr;
-    padding: 100px 48px 60px;
+    padding: 110px 40px 60px;
     gap: 40px;
   }
   .hero-photo-col {
@@ -2894,6 +2923,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
     margin: 20px 0 36px 0;
     grid-column: 1;
     grid-row: auto;
+    width: 100%;
   }
   .photo-frame {
     width: min(320px, 85vw);
@@ -2929,14 +2959,37 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
     border: none;
     padding: 8px;
   }
-  .main-content { margin-left: 0; padding-top: 64px; }
-  .section, .hero-section { padding: 64px 24px; }
-  .footer-inner { padding: 40px 24px; }
+  .main-content { margin-left: 0; width: 100%; }
   
-  .about-grid { grid-template-columns: 1fr; gap: 36px; }
-  .other-projects-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-  .skills-layout { grid-template-columns: 1fr; gap: 36px; }
-  .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  /* PADDING SUPÉRIEUR OBLIGATOIRE POUR ÉVITER LE CHEVAUCHEMENT AVEC L'EN-TÊTE FIXE */
+  .hero-section {
+    padding: 104px 20px 48px 20px !important;
+    min-height: auto;
+  }
+  .section {
+    padding: 64px 20px;
+    min-height: auto;
+  }
+  .footer-inner { padding: 40px 20px; }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 8vw, 4.2rem);
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .other-projects-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .skills-layout { grid-template-columns: 1fr; gap: 32px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+  
+  .section-header {
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .section-rule {
+    min-width: 20px;
+  }
   
   .timeline-tabs-wrapper { flex-direction: column; }
   .tab-list {
@@ -2953,7 +3006,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
     border-bottom: 2px solid transparent;
     margin-left: 0;
     margin-bottom: -2px;
-    padding: 12px 18px;
+    padding: 12px 16px;
     white-space: nowrap;
     min-height: 48px;
   }
@@ -2967,15 +3020,28 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
   .design-stats-col { grid-template-columns: repeat(2, 1fr); }
   
   .projects-filter-bar { gap: 8px; flex-wrap: wrap; }
-  .filter-btn { padding: 8px 16px; font-size: 0.78rem; min-height: 44px; display: inline-flex; align-items: center; }
-  .studio-manifesto-banner { flex-direction: column; text-align: center; padding: 28px 20px; }
+  .filter-btn { padding: 8px 14px; font-size: 0.75rem; min-height: 44px; display: inline-flex; align-items: center; }
+  .studio-manifesto-banner { flex-direction: column; text-align: center; padding: 24px 16px; }
   
-  .hero-cta { flex-direction: column; width: 100%; gap: 12px; }
-  .btn-gold, .btn-outline { width: 100%; justify-content: center; min-height: 48px; }
+  /* BOUTONS D'ACTION MOBILÉ ADAPTATIFS & SANS DÉBORDEMENT */
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .btn-gold, .btn-outline {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 16px;
+    font-size: clamp(0.78rem, 3.6vw, 0.875rem);
+    letter-spacing: 0.02em;
+  }
   
   .hero-stats {
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 16px;
     justify-content: space-between;
   }
   .stat-sep { display: none; }
@@ -2983,49 +3049,64 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-
 
 /* Small Mobiles & Narrow Devices (< 600px) */
 @media (max-width: 600px) {
-  .hero-section { padding: 48px 16px 36px; }
-  .hero-name { font-size: clamp(2.4rem, 10vw, 3.8rem); }
+  .hero-section { padding: 96px 16px 36px !important; }
+  .hero-name { font-size: clamp(2.1rem, 9.5vw, 3.2rem); }
   .section { padding: 48px 16px; }
   .footer-inner { padding: 32px 16px; }
 
-  .photo-frame {
-    width: min(260px, 80vw);
-    height: min(320px, 95vw);
+  .hero-photo-col {
+    margin: 16px 0 28px 0;
   }
-  .badge-available { top: -12px; right: -8px; padding: 6px 12px; font-size: 0.72rem; }
-  .badge-location { bottom: -12px; left: -8px; padding: 6px 12px; font-size: 0.72rem; }
+  .photo-frame {
+    width: min(250px, 78vw);
+    height: min(310px, 92vw);
+  }
+  .badge-available {
+    bottom: -14px; left: 4px;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    animation: none;
+  }
+  .badge-location {
+    top: -14px; right: 4px;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    animation: none;
+  }
 
-  .phone-mockup { width: 100%; max-width: 260px; height: 500px; margin: 0 auto; }
-  .rollup-mockup { width: 100%; max-width: 240px; margin: 0 auto; }
-  .rollup-banner { height: 380px; }
-  .stage-truss-mockup { width: 100%; padding: 16px 8px 12px; }
-  .stage-banner-canvas { height: 180px; }
-  .poster-frame-mockup { width: 100%; padding: 10px; }
-  .poster-screen { height: 190px; }
+  .phone-mockup { width: 100%; max-width: 250px; height: auto; aspect-ratio: 9/18.5; margin: 0 auto; }
+  .rollup-mockup { width: 100%; max-width: 230px; margin: 0 auto; }
+  .rollup-banner { height: 360px; }
+  .stage-truss-mockup { width: 100%; padding: 14px 6px 10px; }
+  .stage-banner-canvas { height: 160px; }
+  .poster-frame-mockup { width: 100%; padding: 8px; }
+  .poster-screen { height: 180px; }
   .lookbook-book { padding: 8px 8px 8px 10px; }
 
   .other-projects-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; gap: 16px; }
-  .about-info-list { grid-template-columns: 1fr; }
+  .about-info-list { grid-template-columns: 1fr; gap: 10px; }
   .design-stats-col { grid-template-columns: 1fr 1fr; }
   .projects-filter-bar { gap: 6px; }
   .filter-count { display: none; }
-  .contact-form { padding: 24px 16px; }
+  .contact-form { padding: 20px 14px; }
   
   .back-top {
-    bottom: 20px;
-    right: 20px;
-    width: 42px;
-    height: 42px;
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
   }
 }
 
-/* Extra Small Devices (320px to 375px) */
+/* Extra Small Devices (320px to 375px - Galaxy Fold / iPhone SE) */
 @media (max-width: 375px) {
-  .hero-name { font-size: 2.2rem; }
-  .hero-greeting { font-size: 0.78rem; }
-  .hero-bio { font-size: 0.9rem; }
-  .section-title { font-size: 1.6rem; }
-  .btn-gold, .btn-outline { font-size: 0.8rem; padding: 12px 18px; }
+  .hero-section { padding: 90px 12px 28px !important; }
+  .hero-name { font-size: 1.95rem; }
+  .hero-greeting { font-size: 0.75rem; }
+  .hero-bio { font-size: 0.88rem; }
+  .section-title { font-size: 1.45rem; }
+  .btn-gold, .btn-outline { font-size: 0.75rem; padding: 11px 12px; letter-spacing: 0; }
+  .photo-frame { width: 220px; height: 270px; }
 }
 
