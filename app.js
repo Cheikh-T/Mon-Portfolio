@@ -111,6 +111,7 @@ function initHamburger() {
 
   btn.addEventListener('click', () => {
     const isOpen = btn.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     if (overlay) overlay.classList.toggle('open', isOpen);
     if (sidebar) sidebar.classList.toggle('mobile-open', isOpen);
   });
@@ -125,13 +126,21 @@ function initHamburger() {
       closeMobileNav();
     });
   });
+
+  // Close on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobileNav();
+  });
 }
 
 function closeMobileNav() {
   const btn = document.getElementById('hamburger');
   const overlay = document.getElementById('mobileNavOverlay');
   const sidebar = document.getElementById('sidebar');
-  if (btn) btn.classList.remove('open');
+  if (btn) {
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
   if (overlay) overlay.classList.remove('open');
   if (sidebar) sidebar.classList.remove('mobile-open');
 }
@@ -787,10 +796,10 @@ const PROJECT_CONFIG = {
     device: 'mobile',
     url: 'https://mywa.market.app',
     items: [
-      { src: 'images/Application/Mywa/home 1.jpg', title: 'Mywa — 01. Accueil marketplace & Boutiques en vedette' },
-      { src: 'images/Application/Mywa/boutique.jpg', title: 'Mywa — 02. Vitrine boutique & Catégories' },
-      { src: 'images/Application/Mywa/boutik.jpg', title: 'Mywa — 03. Fiche produit détaillée & Panier' },
-      { src: 'images/Application/Mywa/Login.jpg', title: 'Mywa — 04. Authentification & Sécurité Firebase' },
+      { src: 'images/Application/Mywa/Login.jpg', title: 'Mywa — 01. Authentification & Sécurité Firebase' },
+      { src: 'images/Application/Mywa/home 1.jpg', title: 'Mywa — 02. Accueil marketplace & Boutiques en vedette' },
+      { src: 'images/Application/Mywa/boutique.jpg', title: 'Mywa — 03. Vitrine boutique & Catégories' },
+      { src: 'images/Application/Mywa/boutik.jpg', title: 'Mywa — 04. Fiche produit détaillée & Panier' },
       { src: 'images/Application/Mywa/menu.jpg', title: 'Mywa — 05. Navigation & Menu principal' },
       { src: 'images/Application/Mywa/Screenshot_20260916_165135.jpg', title: 'Mywa — 06. Notifications & Commandes live' },
       { src: 'images/Application/Mywa/Screenshot_20260916_165143.jpg', title: 'Mywa — 07. Suivi commande en cours' },
@@ -801,32 +810,32 @@ const PROJECT_CONFIG = {
     device: 'mobile',
     url: 'https://cid-banking.secure.ml',
     items: [
-      { src: 'images/Application/Client Bank/home 1.png', title: 'CID Banking — 01. Tableau de bord compte & Solde client' },
-      { src: 'images/Application/Client Bank/1 (1).PNG', title: 'CID Banking — 02. Liste & Historique des opérations bancaires' },
-      { src: 'images/Application/Client Bank/1 (2).PNG', title: 'CID Banking — 03. Validation et reçu de transfert bancaire' },
-      { src: 'images/Application/Client Bank/1 (3).PNG', title: 'CID Banking — 04. Relevé mensuel filtrable' },
-      { src: 'images/Application/Client Bank/1 (4).PNG', title: 'CID Banking — 05. Virement externe & Confirmation' },
-      { src: 'images/Application/Client Bank/detail.png', title: 'CID Banking — 06. Détails d\'opération & Relevé sécurisé' },
-      { src: 'images/Application/Client Bank/home.jpg.jpeg', title: 'CID Banking — 07. Accueil compact & Accès rapide' },
-      { src: 'images/Application/Client Bank/Login.jpg.jpeg', title: 'CID Banking — 08. Login sécurisé JWT & RSA' }
+      { src: 'images/Application/Client Bank/Login.jpg.jpeg', title: 'CID Banking — 01. Login sécurisé JWT & RSA' },
+      { src: 'images/Application/Client Bank/home 1.png', title: 'CID Banking — 02. Tableau de bord compte & Solde client' },
+      { src: 'images/Application/Client Bank/home.jpg.jpeg', title: 'CID Banking — 03. Accueil compact & Accès rapide' },
+      { src: 'images/Application/Client Bank/1 (1).PNG', title: 'CID Banking — 04. Liste & Historique des opérations bancaires' },
+      { src: 'images/Application/Client Bank/1 (2).PNG', title: 'CID Banking — 05. Validation et reçu de transfert bancaire' },
+      { src: 'images/Application/Client Bank/1 (3).PNG', title: 'CID Banking — 06. Relevé mensuel filtrable' },
+      { src: 'images/Application/Client Bank/1 (4).PNG', title: 'CID Banking — 07. Virement externe & Confirmation' },
+      { src: 'images/Application/Client Bank/detail.png', title: 'CID Banking — 08. Détails d\'opération & Relevé sécurisé' }
     ]
   },
   hewo: {
     device: 'mobile',
     url: 'https://hewo-vtc.app',
     items: [
-      { src: 'images/Application/Hewo/Mobile/home.jpg', title: 'Hewo VTC — 01. Accueil & Carte interactive passager' },
-      { src: 'images/Application/Hewo/Mobile/login.jpg', title: 'Hewo VTC — 02. Connexion & Authentification' },
-      { src: 'images/Application/Hewo/Mobile/parcours.jpg', title: 'Hewo VTC — 03. Sélection du parcours & Destination' },
-      { src: 'images/Application/Hewo/Mobile/trajet.jpg', title: 'Hewo VTC — 04. Trajet en cours & Tracking GPS live' },
-      { src: 'images/Application/Hewo/Mobile/menu.jpg', title: 'Hewo VTC — 05. Menu principal & Navigation' },
-      { src: 'images/Application/Hewo/Mobile/profil.jpg', title: 'Hewo VTC — 06. Profil utilisateur & Paramètres' },
-      { src: 'images/Application/Hewo/Mobile/course.jpg', title: 'Hewo VTC — 07. Détail d\'une course active' },
-      { src: 'images/Application/Hewo/Mobile/list.jpg', title: 'Hewo VTC — 08. Liste des courses disponibles' },
-      { src: 'images/Application/Hewo/Mobile/list course.jpg', title: 'Hewo VTC — 09. Liste de courses filtrée & Historique' },
-      { src: 'images/Application/Hewo/Mobile/notif.jpg', title: 'Hewo VTC — 10. Notifications & Alertes en temps réel' },
-      { src: 'images/Application/Hewo/Mobile/requette.jpg', title: 'Hewo VTC — 11. Requête de course & Validation' },
-      { src: 'images/Application/Hewo/Mobile/welcome (1).jpg', title: 'Hewo VTC — 12. Onboarding — Bienvenue (1/5)' },
+      { src: 'images/Application/Hewo/Mobile/login.jpg', title: 'Hewo VTC — 01. Connexion & Authentification' },
+      { src: 'images/Application/Hewo/Mobile/welcome (1).jpg', title: 'Hewo VTC — 02. Onboarding — Bienvenue (1/5)' },
+      { src: 'images/Application/Hewo/Mobile/home.jpg', title: 'Hewo VTC — 03. Accueil & Carte interactive passager' },
+      { src: 'images/Application/Hewo/Mobile/parcours.jpg', title: 'Hewo VTC — 04. Sélection du parcours & Destination' },
+      { src: 'images/Application/Hewo/Mobile/trajet.jpg', title: 'Hewo VTC — 05. Trajet en cours & Tracking GPS live' },
+      { src: 'images/Application/Hewo/Mobile/menu.jpg', title: 'Hewo VTC — 06. Menu principal & Navigation' },
+      { src: 'images/Application/Hewo/Mobile/profil.jpg', title: 'Hewo VTC — 07. Profil utilisateur & Paramètres' },
+      { src: 'images/Application/Hewo/Mobile/course.jpg', title: 'Hewo VTC — 08. Détail d\'une course active' },
+      { src: 'images/Application/Hewo/Mobile/list.jpg', title: 'Hewo VTC — 09. Liste des courses disponibles' },
+      { src: 'images/Application/Hewo/Mobile/list course.jpg', title: 'Hewo VTC — 10. Liste de courses filtrée & Historique' },
+      { src: 'images/Application/Hewo/Mobile/notif.jpg', title: 'Hewo VTC — 11. Notifications & Alertes en temps réel' },
+      { src: 'images/Application/Hewo/Mobile/requette.jpg', title: 'Hewo VTC — 12. Requête de course & Validation' },
       { src: 'images/Application/Hewo/Mobile/welcome (2).jpg', title: 'Hewo VTC — 13. Onboarding — Présentation app (2/5)' },
       { src: 'images/Application/Hewo/Mobile/welcome (3).jpg', title: 'Hewo VTC — 14. Onboarding — Fonctionnalités (3/5)' },
       { src: 'images/Application/Hewo/Mobile/welcome (4).jpg', title: 'Hewo VTC — 15. Onboarding — Sécurité & Confiance (4/5)' },
@@ -837,10 +846,11 @@ const PROJECT_CONFIG = {
     device: 'mobile',
     url: 'https://malishi.com',
     items: [
-      { src: 'images/Application/Mywa/boutique.jpg', title: 'MaliShi — 01. Vitrine mobile des produits Karité' },
-      { src: 'images/Application/Mywa/boutik.jpg', title: 'MaliShi — 02. Grille catalogue & Filtres par gamme' },
-      { src: 'images/Application/Mywa/menu.jpg', title: 'MaliShi — 03. Navigation catalogue & Catégories' },
-      { src: 'images/Application/Mywa/home 1.jpg', title: 'MaliShi — 04. Accueil promotions & Valorisation locale' }
+      { src: 'images/Application/Mywa/Login.jpg', title: 'MaliShi — 01. Authentification & Inscription' },
+      { src: 'images/Application/Mywa/boutique.jpg', title: 'MaliShi — 02. Vitrine mobile des produits Karité' },
+      { src: 'images/Application/Mywa/boutik.jpg', title: 'MaliShi — 03. Grille catalogue & Filtres par gamme' },
+      { src: 'images/Application/Mywa/menu.jpg', title: 'MaliShi — 04. Navigation catalogue & Catégories' },
+      { src: 'images/Application/Mywa/home 1.jpg', title: 'MaliShi — 05. Accueil promotions & Valorisation locale' }
     ]
   },
   /* ── Dashboards Web ── */
@@ -848,31 +858,31 @@ const PROJECT_CONFIG = {
     device: 'desktop',
     url: 'https://admin.mywa.market/dashboard',
     items: [
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (1).png', title: 'Mywa Dashboard — 01. Vue d\'ensemble des ventes & Métriques clés' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (2).png', title: 'Mywa Dashboard — 02. Graphiques analytiques de performance' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (3).png', title: 'Mywa Dashboard — 03. Administration boutiques partenaires' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (4).png', title: 'Mywa Dashboard — 04. Gestion commandes, livraisons & stocks' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (5).png', title: 'Mywa Dashboard — 05. Rapports financiers & Export' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (6).png', title: 'Mywa Dashboard — 06. Gestion utilisateurs & Rôles' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (7).png', title: 'Mywa Dashboard — 07. Tableau de bord multi-boutiques' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (8).png', title: 'Mywa Dashboard — 08. Analytique avancée & Tendances' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (9).png', title: 'Mywa Dashboard — 09. Configuration & Paramètres admin' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (10).png', title: 'Mywa Dashboard — 10. Statistiques temps réel' },
-      { src: 'images/Application/Mywa/Dashboard/Dashboard (11).png', title: 'Mywa Dashboard — 11. Gestion des livreurs & Zones' },
-      { src: 'images/Application/Mywa/Dashboard/Login.png', title: 'Mywa Dashboard — 12. Login administrateur sécurisé' }
+      { src: 'images/Application/Mywa/Dashboard/Login.png', title: 'Mywa Dashboard — 01. Login administrateur sécurisé' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (1).png', title: 'Mywa Dashboard — 02. Vue d\'ensemble des ventes & Métriques clés' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (2).png', title: 'Mywa Dashboard — 03. Graphiques analytiques de performance' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (3).png', title: 'Mywa Dashboard — 04. Administration boutiques partenaires' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (4).png', title: 'Mywa Dashboard — 05. Gestion commandes, livraisons & stocks' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (5).png', title: 'Mywa Dashboard — 06. Rapports financiers & Export' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (6).png', title: 'Mywa Dashboard — 07. Gestion utilisateurs & Rôles' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (7).png', title: 'Mywa Dashboard — 08. Tableau de bord multi-boutiques' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (8).png', title: 'Mywa Dashboard — 09. Analytique avancée & Tendances' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (9).png', title: 'Mywa Dashboard — 10. Configuration & Paramètres admin' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (10).png', title: 'Mywa Dashboard — 11. Statistiques temps réel' },
+      { src: 'images/Application/Mywa/Dashboard/Dashboard (11).png', title: 'Mywa Dashboard — 12. Gestion des livreurs & Zones' }
     ]
   },
   paie: {
     device: 'desktop',
     url: 'https://rh-paie.enterprise.ml/admin/payroll',
     items: [
-      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083616.png', title: 'Gestion de Paie — 01. Vue globale RH & Employés' },
-      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083646.png', title: 'Gestion de Paie — 02. Organigramme dynamique d\'entreprise' },
-      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083808.png', title: 'Gestion de Paie — 03. Moteur de calcul des salaires' },
-      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083856.png', title: 'Gestion de Paie — 04. Planning des congés payés & Absences' },
-      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 084557.png', title: 'Gestion de Paie — 05. Bulletins de paie & Export comptable' },
-      { src: 'images/Application/Gestion de paie/PC/home.png', title: 'Gestion de Paie — 06. Dashboard RH principal' },
-      { src: 'images/Application/Gestion de paie/PC/login.png', title: 'Gestion de Paie — 07. Authentification & Sécurité' }
+      { src: 'images/Application/Gestion de paie/PC/login.png', title: 'Gestion de Paie — 01. Authentification & Sécurité Admin' },
+      { src: 'images/Application/Gestion de paie/PC/home.png', title: 'Gestion de Paie — 02. Dashboard RH principal' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083616.png', title: 'Gestion de Paie — 03. Vue globale RH & Employés' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083646.png', title: 'Gestion de Paie — 04. Organigramme dynamique d\'entreprise' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083808.png', title: 'Gestion de Paie — 05. Moteur de calcul des salaires' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 083856.png', title: 'Gestion de Paie — 06. Planning des congés payés & Absences' },
+      { src: 'images/Application/Gestion de paie/PC/Capture d\'écran 2026-09-29 084557.png', title: 'Gestion de Paie — 07. Bulletins de paie & Export comptable' }
     ]
   },
   quantix: {
